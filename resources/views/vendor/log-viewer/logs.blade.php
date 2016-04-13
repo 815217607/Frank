@@ -2,8 +2,8 @@
 
 @section('page-header')
     <h1>
-        Log Viewer
-        <small>By <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small>
+        查看日志
+        <small>用户 <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small>
     </h1>
 @endsection
 

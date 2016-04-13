@@ -37,7 +37,7 @@
                 @yield('page-header')
 
                 {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                {!! Breadcrumbs::renderIfExists() !!}
+            {!! Breadcrumbs::renderIfExists() !!}
             </section>
 
             <!-- Main content -->
@@ -47,11 +47,11 @@
             </section><!-- /.content -->
         </div><!-- /.content-wrapper -->
 
-        @include('backend.includes.footer')
+        {{--@include('backend.includes.footer')--}}
     </div><!-- ./wrapper -->
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
     <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
     {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
 

@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class {name} extends Model
+{
+    protected $table = '{lname}';
+    public $timestamps = false;
+    public $guarded = [];
+    //关联用户
+    public function user()
+    {
+
+    }
+}

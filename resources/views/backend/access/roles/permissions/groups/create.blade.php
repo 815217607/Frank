@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {!! Form::open(['route' => 'admin.access.roles.permission-group.store', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+    {!! Form::open(['route' => 'admin.access.groups.permission-group.store', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
         <div class="box box-success">
             <div class="box-header with-border">
@@ -34,7 +34,7 @@
         <div class="box box-success">
             <div class="box-body">
                 <div class="pull-left">
-                    <a href="{!! route('admin.access.roles.permissions.index') !!}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
+                    <a href="{!! route('admin.access.groups.permission-group.index') !!}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
                 </div>
 
                 <div class="pull-right">

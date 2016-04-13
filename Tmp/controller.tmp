@@ -1,0 +1,125 @@
+<?php
+namespace App\Http\Controllers\{home};
+use App\Core\Facades\{name}Service;
+use App\Http\Controllers\Controller;
+use App\Models\{name};
+use Illuminate\Http\Request;
+
+/**
+ * User: fuqixue1987@163.com
+ */
+
+class {name}Controller extends Controller {
+     /**
+         * 列表
+         * @param Request $request
+         * @return \Illuminate\View\View
+         */
+        public function index(Request $request) {
+            //
+            $params=$request->all();
+            $info= {name}Service::info($params);
+            return $info;
+
+        }
+
+        /**
+         * 删除
+         * @param $id
+         * @param Request $request
+         * @return string
+         */
+        public function del($id){
+            $info={name}Service::delById($id);
+            return $info;
+        }
+
+        /**
+         * 单一更新排序
+         * @param $id
+         * @param Request $request
+         * @return array|string
+         */
+        public function sort($id,Request $request){
+            $request['id']=$id;
+            $info={name}Service::update($request);
+            return empty($info)?array():$info;
+        }
+
+        /**
+         * setStatus a newly created resource in storage.
+         * 修改是否显示状态
+         * @param  Request  $request
+         * @return Response
+         */
+        public function setStatus($id,Request $request)
+        {
+            $request['id']=$id;
+            $info=  {name}Service::setStatus($request);
+            return $info;
+        }
+        /**
+         * getEdit the form for editing the specified resource.
+         * 修改信息模板渲染
+         * @param  int  $id
+         * @return Response
+         */
+        public function getEdit($id)
+        {
+            //
+            $info={name}Service::show($id);
+            if(C("VIEW_OFF_SET"))
+                return view('Admin.bike_add',['info'=>$info]);
+            else
+                return empty($info->toArray())?array():$info;
+        }
+        /**
+         * Update the specified resource in storage.
+         * 修改信息 数据库执行
+         * @param  Request  $request
+         * @param  int  $id
+         * @return Response
+         */
+        public function update($bike_token,Request $request )
+        {
+            //
+            $param=$request->all();
+            $param['bike_token']=$bike_token;
+            return {name}Service::update($param);
+        }
+        /**
+         * create the form for creating a new resource.
+         * 添加
+         * @return Response
+         */
+        public function create(Request $request)
+        {
+            //
+            $param=$request->all();
+            $ref={name}Service::create($param);
+            return $ref;
+        }
+
+        /**
+         * 批量删除
+         * @param Request $request
+         * @return mixed
+         */
+        public function destroy(Request $request){
+            $param=$request->all();
+            $ref={name}Service::destroy($param);
+            return $ref;
+        }
+
+        /**
+         * @param $id
+         * @param Request $request
+         * @return mixed
+         */
+        public function show($id,Request $request){
+            $param=$request->all();
+            $param['id']=$id;
+            $info={name}Service::findById($param);
+            return $info;
+        }
+}

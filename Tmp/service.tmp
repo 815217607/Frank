@@ -1,0 +1,108 @@
+<?php
+ /**
+ * User: fuqixue1987@163.com
+ */
+
+namespace App\Core\Services;
+
+use App\Models\{name};
+use Illuminate\Support\Facades\DB;
+
+class {name}ServiceImpl
+   {
+    /**
+     * 创建数据
+     * @param $param
+     * @return array|static
+     */
+    public function  create($param){
+        $info= {name}::create($param);
+        return empty($info)?array():$info;
+    }
+
+    /**
+     * 根据ID获取数据
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id){
+       return {name}::find($id);
+    }
+
+    /**
+     * 根据条件获取数据
+     * @param $param
+     * @param array $fields
+     * @return mixed
+     */
+    public function info($param,$fields=array()){
+          $query={name}::query();
+            foreach ($param as $key=>$val){
+                $query->where($key,$val);
+            }
+           $info= empty($fields)?$query->get():$query->get($fields);
+          return  $info;
+    }
+
+    /**
+     * 跟新数据
+     * @param $param
+     * @return array|string
+     */
+    public function update($param){
+        $data={name}::find($param['id']);
+        if(empty($data)) return error();
+                unset($param['id']);
+                foreach($param as $key=>$val){
+                    $data->$key=$val;
+                }
+                $falg=$data->save();
+        return $falg;
+    }
+
+    /**
+     * 删除数据
+     * @param $id
+     */
+    public function delById($id){
+        $data={name}::find($id);
+       return $data->delete();
+    }
+
+    /**
+     * 根据条件查询数据
+     * @param $params
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
+    public function selectData($param,$page=null){
+        $query={name}::query();
+            if (isset($param['redate'][0]) && !empty($param['redate'][0])) {
+                $query->where('created_at', '>=', date('Y-m-d h:i:s',strtotime($param['redate'][0])-86400+1));
+            }
+
+            if (isset($param['redate'][1]) && !empty($param['redate'][1])) {
+                $query->where('created_at', '<=', date('Y-m-d h:i:s',strtotime($param['redate'][1])+86400-1));
+            }
+         if (array_get($param, 'keyword', null)) {
+               $work = "%" . $param['keyword'] . "%";
+
+//              $query->where(function ($qurey) use ($work) {
+//                         $qurey->orwhere('consignee', 'like', $work);
+//                   $qurey->orwhere('order_no', 'like', $work);
+//                   $qurey->orwhere('order_no', 'like', strtoupper($work));
+//
+//                   $qurey->orwhereExists(function ($query) use ($work) {
+//                       $query->select(DB::raw(1))
+//                           ->from('user')
+//                           ->whereRaw(DB::getTablePrefix().'reward_order.user_id = '.DB::getTablePrefix().'user.id')
+//                           ->where(function ($query) use ($work) {
+//                               $query->orwhere('user.phone', 'like', $work);
+//                               $query->orwhere('user.email', 'like', $work);
+//                           });
+//                   });
+//               });
+
+           }
+        return  !isset($page)?$query->get():$query->paginate($page);
+    }
+   }

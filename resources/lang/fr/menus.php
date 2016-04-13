@@ -79,6 +79,7 @@ return [
             'it' => 'Italien (Italian)',
             'pt-BR' => 'Portugais (Brazilian Portuguese)',
             'sv' => 'Suédois (Swedish)',
+            'zh' => 'China(simplified)',
         ],
     ],
 ];

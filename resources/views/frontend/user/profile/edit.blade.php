@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.user.profile.update_information') }}</div>
+                <div class="panel-heading">{{ trans('labels.frontend.user.profile.update_information') }}333</div>
 
                 <div class="panel-body">
 

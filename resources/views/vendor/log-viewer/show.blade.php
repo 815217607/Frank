@@ -2,8 +2,8 @@
 
 @section('page-header')
     <h1>
-        Log Viewer
-        <small>By <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small>
+        查看日志
+        <small>用户 <a href="https://github.com/ARCANEDEV/LogViewer" target="_blank">ARCANEDEV</a></small>
     </h1>
 @endsection
 
@@ -98,7 +98,7 @@
     <div class="box box-success">
         <div class="box-body">
 
-            <h1 class="page-header">Log [{{ $log->date }}]</h1>
+            <h1 class="page-header">日志 [{{ $log->date }}]</h1>
 
             <div class="row">
                 <div class="col-md-2">
@@ -107,14 +107,14 @@
                 <div class="col-md-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Log info :
+                            日志信息 :
 
                             <div class="group-btns pull-right">
                                 <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-xs btn-success">
-                                    <i class="fa fa-download"></i> DOWNLOAD
+                                    <i class="fa fa-download"></i> 下载
                                 </a>
                                 <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-toggle="modal">
-                                    <i class="fa fa-trash-o"></i> DELETE
+                                    <i class="fa fa-trash-o"></i> 删除
                                 </a>
                             </div>
                         </div>
@@ -122,27 +122,27 @@
                             <table class="table table-condensed">
                                 <thead>
                                 <tr>
-                                    <td>File path :</td>
+                                    <td>文件路径(File path) :</td>
                                     <td colspan="5">{{ $log->getPath() }}</td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>Log entries : </td>
+                                    <td>日志条数(Log entries) : </td>
                                     <td>
                                     <span class="label label-primary">
                                         {{ $entries->total() }}
                                     </span>
                                     </td>
-                                    <td>Size :</td>
+                                    <td>大小(Size) :</td>
                                     <td>
                                         <span class="label label-primary">{{ $log->size() }}</span>
                                     </td>
-                                    <td>Created at :</td>
+                                    <td>创建时间(Created at) :</td>
                                     <td>
                                         <span class="label label-primary">{{ $log->createdAt() }}</span>
                                     </td>
-                                    <td>Updated at :</td>
+                                    <td>更新时间(Updated at) :</td>
                                     <td>
                                         <span class="label label-primary">{{ $log->updatedAt() }}</span>
                                     </td>
@@ -158,10 +158,10 @@
                                 <td colspan="4">{!! $entries->render() !!}</td>
                             </tr>
                             <tr>
-                                <th>ENV</th>
-                                <th style="width: 120px;">Level</th>
-                                <th style="width: 65px;">Time</th>
-                                <th>Header</th>
+                                <th>环境(ENV)</th>
+                                <th style="width: 120px;">错误级别</th>
+                                <th style="width: 65px;">时间</th>
+                                <th>错误头</th>
                             </tr>
                             </thead>
                             <tbody>

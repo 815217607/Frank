@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Providers;
+use App\Core\Services\{name}ServiceImpl;
+use Illuminate\Support\ServiceProvider;
+
+class {name}ServiceProvider extends ServiceProvider
+{
+    public $defer = true;
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+        $this->app->singleton('{name}Service', function($app) {
+            return new {name}ServiceImpl();
+        });
+    }
+
+    /**
+     * @return array
+     */
+    public function provides() {
+        return ['{name}Service'];
+    }
+}

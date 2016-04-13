@@ -2,6 +2,7 @@
 
 namespace App\Models\Access\Permission;
 
+use App\Models\Access\Menu\Menu;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Access\Permission\Traits\Attribute\PermissionAttribute;
 use App\Models\Access\Permission\Traits\Relationship\PermissionRelationship;
@@ -35,4 +36,6 @@ class Permission extends Model
     {
         $this->table = config('access.permissions_table');
     }
+
+
 }

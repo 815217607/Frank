@@ -25,110 +25,110 @@
         <div class="box-body">
             <div>
                 <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">
-                            {{ trans('labels.backend.access.permissions.tabs.groups') }}
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#permissions" data-url-tab-hash="#all-permissions" aria-controls="permissions" role="tab" data-toggle="tab">
-                            {{ trans('labels.backend.access.permissions.tabs.permissions') }}
-                        </a>
-                    </li>
-                </ul>
+                {{--<ul class="nav nav-tabs" role="tablist">--}}
+                    {{--<li role="presentation" class="active">--}}
+                        {{--<a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">--}}
+                            {{--{{ trans('labels.backend.access.permissions.tabs.groups') }}--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    {{--<li role="presentation">--}}
+                        {{--<a href="#permissions" data-url-tab-hash="#all-permissions" aria-controls="permissions" role="tab" data-toggle="tab">--}}
+                            {{--{{ trans('labels.backend.access.permissions.tabs.permissions') }}--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
 
                 <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="groups" style="padding-top:20px">
+                {{--<div class="tab-content">--}}
+                    {{--<div role="tabpanel" class="tab-pane active" id="groups" style="padding-top:20px">--}}
 
-                        <div class="row">
-                            <div class="col-lg-6">
+                        {{--<div class="row">--}}
+                            {{--<div class="col-lg-6">--}}
 
-                                <div class="alert alert-info">
-                                    <i class="fa fa-info-circle"></i> {{ trans('strings.backend.access.permissions.sort_explanation') }}
-                                </div><!--alert info-->
+                                {{--<div class="alert alert-info">--}}
+                                    {{--<i class="fa fa-info-circle"></i> {{ trans('strings.backend.access.permissions.sort_explanation') }}--}}
+                                {{--</div><!--alert info-->--}}
 
-                                <div class="dd permission-hierarchy">
-                                    <ol class="dd-list">
-                                        @foreach ($groups as $group)
-                                                <li class="dd-item" data-id="{!! $group->id !!}">
-                                                    <div class="dd-handle">{!! $group->name !!} <span class="pull-right">{!! $group->permissions->count() !!} {{ trans('labels.backend.access.permissions.label') }}</span></div>
+                                {{--<div class="dd permission-hierarchy">--}}
+                                    {{--<ol class="dd-list">--}}
+                                        {{--@foreach ($groups as $group)--}}
+                                                {{--<li class="dd-item" data-id="{!! $group->id !!}">--}}
+                                                    {{--<div class="dd-handle">{!! $group->name !!} <span class="pull-right">{!! $group->permissions->count() !!} {{ trans('labels.backend.access.permissions.label') }}</span></div>--}}
 
-                                                    @if ($group->children->count())
-                                                        <ol class="dd-list">
-                                                            @foreach($group->children as $child)
-                                                                <li class="dd-item" data-id="{!! $child->id !!}">
-                                                                    <div class="dd-handle">{!! $child->name !!} <span class="pull-right">{!! $child->permissions->count() !!} {{ trans('labels.backend.access.permissions.label') }}</span></div>
-                                                                </li>
-                                                            @endforeach
-                                                        </ol>
-                                                </li>
-                                            @else
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ol>
-                                </div><!--master-list-->
-                            </div><!--col-lg-4-->
+                                                    {{--@if ($group->children->count())--}}
+                                                        {{--<ol class="dd-list">--}}
+                                                            {{--@foreach($group->children as $child)--}}
+                                                                {{--<li class="dd-item" data-id="{!! $child->id !!}">--}}
+                                                                    {{--<div class="dd-handle">{!! $child->name !!} <span class="pull-right">{!! $child->permissions->count() !!} {{ trans('labels.backend.access.permissions.label') }}</span></div>--}}
+                                                                {{--</li>--}}
+                                                            {{--@endforeach--}}
+                                                        {{--</ol>--}}
+                                                {{--</li>--}}
+                                            {{--@else--}}
+                                                {{--</li>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                    {{--</ol>--}}
+                                {{--</div><!--master-list-->--}}
+                            {{--</div><!--col-lg-4-->--}}
 
-                            <div class="col-lg-6">
+                            {{--<div class="col-lg-6">--}}
 
-                                <div class="alert alert-info">
-                                    <i class="fa fa-info-circle"></i> {{ trans('strings.backend.access.permissions.edit_explanation') }}
-                                </div><!--alert info-->
+                                {{--<div class="alert alert-info">--}}
+                                    {{--<i class="fa fa-info-circle"></i> {{ trans('strings.backend.access.permissions.edit_explanation') }}--}}
+                                {{--</div><!--alert info-->--}}
 
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>{{ trans('labels.backend.access.permissions.groups.table.name') }}</th>
-                                            <th>{{ trans('labels.general.actions') }}</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ($groups as $group)
-                                            <tr>
-                                                <td>
-                                                    {!! $group->name !!}
+                                {{--<div class="table-responsive">--}}
+                                    {{--<table class="table table-striped table-bordered table-hover">--}}
+                                        {{--<thead>--}}
+                                        {{--<tr>--}}
+                                            {{--<th>{{ trans('labels.backend.access.permissions.groups.table.name') }}</th>--}}
+                                            {{--<th>{{ trans('labels.general.actions') }}</th>--}}
+                                        {{--</tr>--}}
+                                        {{--</thead>--}}
+                                        {{--<tbody>--}}
+                                        {{--@foreach ($groups as $group)--}}
+                                            {{--<tr>--}}
+                                                {{--<td>--}}
+                                                    {{--{!! $group->name !!}--}}
 
-                                                    @if ($group->permissions->count())
-                                                        <div style="padding-left:40px;font-size:.8em">
-                                                            @foreach ($group->permissions as $permission)
-                                                                {!! $permission->display_name !!}<br/>
-                                                            @endforeach
-                                                        </div>
-                                                    @endif
-                                                </td>
-                                                <td>{!! $group->action_buttons !!}</td>
-                                            </tr>
+                                                    {{--@if ($group->permissions->count())--}}
+                                                        {{--<div style="padding-left:40px;font-size:.8em">--}}
+                                                            {{--@foreach ($group->permissions as $permission)--}}
+                                                                {{--{!! $permission->display_name !!}<br/>--}}
+                                                            {{--@endforeach--}}
+                                                        {{--</div>--}}
+                                                    {{--@endif--}}
+                                                {{--</td>--}}
+                                                {{--<td>{!! $group->action_buttons !!}</td>--}}
+                                            {{--</tr>--}}
 
-                                            @if ($group->children->count())
-                                                @foreach ($group->children as $child)
-                                                    <tr>
-                                                        <td style="padding-left:40px">
-                                                            <em>{!! $child->name !!}</em>
+                                            {{--@if ($group->children->count())--}}
+                                                {{--@foreach ($group->children as $child)--}}
+                                                    {{--<tr>--}}
+                                                        {{--<td style="padding-left:40px">--}}
+                                                            {{--<em>{!! $child->name !!}</em>--}}
 
-                                                            @if ($child->permissions->count())
-                                                                <div style="padding-left:40px;font-size:.8em">
-                                                                    @foreach ($child->permissions as $permission)
-                                                                        {!! $permission->display_name !!}<br/>
-                                                                    @endforeach
-                                                                </div>
-                                                            @endif
-                                                        </td>
-                                                        <td>{!! $child->action_buttons !!}</td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div><!--col-lg-8-->
-                        </div><!--row-->
+                                                            {{--@if ($child->permissions->count())--}}
+                                                                {{--<div style="padding-left:40px;font-size:.8em">--}}
+                                                                    {{--@foreach ($child->permissions as $permission)--}}
+                                                                        {{--{!! $permission->display_name !!}<br/>--}}
+                                                                    {{--@endforeach--}}
+                                                                {{--</div>--}}
+                                                            {{--@endif--}}
+                                                        {{--</td>--}}
+                                                        {{--<td>{!! $child->action_buttons !!}</td>--}}
+                                                    {{--</tr>--}}
+                                                {{--@endforeach--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--</tbody>--}}
+                                    {{--</table>--}}
+                                {{--</div>--}}
+                            {{--</div><!--col-lg-8-->--}}
+                        {{--</div><!--row-->--}}
 
-                    </div><!--groups-->
+                    {{--</div><!--groups-->--}}
 
                     <div role="tabpanel" class="tab-pane" id="permissions" style="padding-top:20px">
 
@@ -232,14 +232,14 @@
         // update url after changing tab.
         // This is to get complete consistency and
         // keep the url updated correctly.
-        $('.nav-tabs a').on('shown.bs.tab', function (e) {
-            if(e.target.hash === '#permissions'){
-                window.location.hash = '#all-permissions';
-            }
-            else{
-                history.pushState("", document.title, window.location.pathname+ window.location.search);
-            }
-        })
+//        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+//            if(e.target.hash === '#permissions'){
+//                window.location.hash = '#all-permissions';
+//            }
+//            else{
+//                history.pushState("", document.title, window.location.pathname+ window.location.search);
+//            }
+//        })
 
         $(function() {
 
@@ -253,7 +253,7 @@
             hierarchy.on('change', function() {
                 @permission('sort-permission-groups')
                     $.ajax({
-                        url : "{!! route('admin.access.roles.groups.update-sort') !!}",
+                        url : "{!! route('admin.access.groups.update-sort') !!}",
                         type: "post",
                         data : {data:hierarchy.nestable('serialize')},
                         success: function(data) {

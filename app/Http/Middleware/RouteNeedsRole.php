@@ -20,7 +20,7 @@ class RouteNeedsRole
     {
         if (! access()->hasRole($role)) {
             return redirect()
-                ->route('frontend.index')
+                ->route('frontend.auth.login')
                 ->withFlashDanger(trans('auth.general_error'));
         }
 

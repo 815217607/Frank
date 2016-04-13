@@ -2,7 +2,10 @@
 
 namespace App\Http;
 
+
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Routing\Router;
 
 /**
  * Class Kernel
@@ -35,7 +38,6 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \App\Http\Middleware\LocaleMiddleware::class,
         ],
-
         'admin' => [
             'web',
             'auth',
@@ -59,11 +61,21 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-
+        'app_user_auth' => \App\Http\Middleware\Api\AppAuthTokenMiddleware::class,
         /**
          * Access Middleware
          */
         'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
     ];
+//    public function __construct(Application $app, Router $router){
+//
+//        $data=['access.routeNeedsPermission:view-backend'];
+//        $this->middlewareGroups['api']=$data;
+//
+//        dump($this->middlewareGroups);
+//        $dirs=$router->getMiddleware();
+//
+//        parent::__construct($app,$router);
+//    }
 }

@@ -37,15 +37,15 @@
                                     <a href="#">
                                         <div class="pull-left">
                                             <!-- User Image -->
-                                            <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image"/>
+                                            <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="img-circle" alt="User Image"/>
                                         </div>
                                         <!-- Message title and timestamp -->
                                         <h4>
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                            创建消息
+                                            <small><i class="fa fa-clock-o"></i> 5 分钟</small>
                                         </h4>
                                         <!-- The message -->
-                                        <p>Why not buy a new awesome theme?</p>
+                                        <p>没有创建新的息?</p>
                                     </a>
                                 </li><!-- end message -->
                             </ul><!-- /.menu -->
@@ -62,13 +62,13 @@
                         <span class="label label-warning">0</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}</li>
+                        <li class="header">{{app('translator')->transChoice('strings.backend.general.you_have.notifications', 0)}}{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
                                 <li><!-- start notification -->
                                     <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                        <i class="fa fa-users text-aqua"></i> 今天注册5个新成员
                                     </a>
                                 </li><!-- end notification -->
                             </ul>
@@ -93,14 +93,14 @@
                                     <a href="#">
                                         <!-- Task title and progress text -->
                                         <h3>
-                                            Design some buttons
+                                            完成任务
                                             <small class="pull-right">20%</small>
                                         </h3>
                                         <!-- The progress bar -->
                                         <div class="progress xs">
                                             <!-- Change the css width attribute to simulate progress -->
                                             <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                <span class="sr-only">20% Complete</span>
+                                                <span class="sr-only">20% 进度</span>
                                             </div>
                                         </div>
                                     </a>
@@ -118,7 +118,7 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="{!! access()->user()->picture !!}" class="user-image" alt="User Image"/>
+                        <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{{ access()->user()->name }}</span>
                     </a>
@@ -126,22 +126,22 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
+                            <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="img-circle" alt="User Image" />
                             <p>
                                 {!! access()->user()->name !!} - {{ trans('roles.web_developer') }}
-                                <small>{{ trans('strings.backend.general.member_since') }} XX/XX/XXXX</small>
+                                <small>{{ trans('strings.backend.general.member_since') }}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
                             <div class="col-xs-4 text-center">
-                                <a href="#">Link</a>
+                                <a href="#">连接</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="#">Link</a>
+                                <a href="#">连接</a>
                             </div>
                             <div class="col-xs-4 text-center">
-                                <a href="#">Link</a>
+                                <a href="#">连接</a>
                             </div>
                         </li>
                         <!-- Menu Footer-->

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Access\Permission\Traits\Relationship;
+use App\Models\Access\Menu\Menu;
 
 /**
  * Class PermissionRelationship
@@ -32,6 +33,9 @@ trait PermissionRelationship
         return $this->belongsToMany(config('auth.providers.users.model'), config('access.permission_user_table'), 'permission_id', 'user_id');
     }
 
+    public function menus(){
+        $this->hasOne(Menu::class,'permission_id','id');
+    }
     /**
      * @return mixed
      */

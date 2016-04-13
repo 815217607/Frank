@@ -1,0 +1,186 @@
+@extends('manage.app')
+
+@section('htmlheader_title')
+    Home
+@endsection
+
+
+@section('main-content')
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="mail-box-header">
+				<h2>支持订单</h2>
+			</div>
+			<div class="mail-box">
+				<div class="mail-body">
+					<form method="get" class="form-horizontal"  >
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">下单时间</label>
+								<div class="col-sm-9" id="datepicker">
+									<div class="input-daterange input-group text-left" >
+										<input type="text" class="input-sm form-control" name="redate[]" value="{{ isset($params['redate'][0])?$params['redate'][0]:'' }}">
+										<span class="input-group-addon">to</span>
+										<input type="text" class="input-sm form-control" name="redate[]" value="{{ isset($params['redate'][1])?$params['redate'][1]:'' }}">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">支付状态</label>
+								<div class="col-sm-9">
+									<select class="form-control m-b" name="pay_status">
+										<option value="">全部</option>
+										<option value="2" {{(isset($params['pay_status'])&&$params['pay_status']==2)?'selected':''}}>已支付</option>
+										<option value="1" {{(isset($params['pay_status'])&&$params['pay_status']==1)?'selected':''}}>未支付</option>
+										<option value="3" {{(isset($params['pay_status'])&&$params['pay_status']==3)?'selected':''}}>已退款</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">关键字</label>
+								<div class="col-sm-9">
+									<input type="text" name="keyword" class="form-control keword-search" placeholder="项目编号、订单编号、会员名称" value="{{ isset($params['keyword'])?$params['keyword']:'' }}">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 text-right">
+							<button class="btn btn-white" type="submit">查询</button>
+						</div>
+
+					</form>
+				</div>
+
+				<div class="ibox">
+					<div class="ibox-title">
+						<h5>明细列表</h5>
+
+						<div class="ibox-tools"></div>
+					</div>
+					<div class="ibox-content">
+						<table class="table">
+							<thead>
+							<tr>
+								<th>订单编号</th>
+								<th>项目编号</th>
+								<th>项目名称</th>
+								<th>众筹模式</th>
+								<th>下单时间</th>
+								<th>付款时间</th>
+								<th>会员信息</th>
+								<th>@lang('order.zc_price')（元）</th>
+								<th>@lang('order.zc_num')</th>
+								<th>@lang('order.pack_fee')（元）</th>
+								<th>@lang('order.zc_mount')</th>
+								<th>支付状态</th>
+								<th >操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							@foreach( $info as $val)
+								<tr>
+									<td>{{ isset($val->order_no)?$val->order_no:'' }}</td>
+									<td>{{ isset($val->project_id)?$val->project_id:'' }}</td>
+									<td><a href="{{url('/manage/order/orderproject',[$val->project_id])}}">{{ isset($val->project_info->project_title)?$val->project_info->project_title:'' }}</a></td>
+									<td>@if(isset($val->project_info->project_type)&& (intval($val->project_info->project_type)==1)) 普通众筹 @else 阶梯众筹 @endif</td>
+									<td>{{ isset($val->created_at)?$val->created_at:'' }}</td>
+									<td>{{ isset($val->pay_time)?(strtotime($val->pay_time)<0?'':$val->pay_time):'' }}</td>
+									<td>{{ isset($val->user_info->phone)?$val->user_info->phone :(isset($val->user_info->email)?$val->user_info->email:'' )}}</td>
+									<td>{{ isset($val->reward_oneinfo->price)?$val->reward_oneinfo->price:0 }}</td>
+									<td>{{ isset($val->reward_oneinfo->num)?$val->reward_oneinfo->num:0 }}</td>
+									<td>{{ isset($val->delivery_fee)?$val->delivery_fee:''}}</td>
+									<td>{{ isset($val->order_amount)?$val->order_amount:''}}</td>
+									<td>{{ isset($val->pay_status)?\App\Models\Order::getPayStatus($val->pay_status):''}}</td>
+									<td>
+										<a href="{{ url('/manage/order/show',[$val->id]) }}"  id="wm" class="wm"> 查看详情</a>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
+						<div class="row">
+							<span>总数:</span><span> {!! $info->total() !!}</span> {!! $info->render() !!}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+@endsection
+
+@section('count_script')
+
+		<!-- Data Tables -->
+		<script src="{{asset('/js/plugins/dataTables/jquery.dataTables.js')}}"></script>
+		<script src="{{asset('/js/plugins/dataTables/dataTables.bootstrap.js')}}"></script>
+		<script src="{{asset('/js/plugins/dataTables/dataTables.responsive.js')}}"></script>
+		<script src="{{asset('/js/plugins/dataTables/dataTables.tableTools.min.js')}}"></script>
+
+		<!-- Data picker -->
+		<script src="{{asset('/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+		<!-- Custom and plugin javascript -->
+		<script src="{{asset('/js/inspinia.js')}}"></script>
+		<script src="{{asset('/js/plugins/pace/pace.min.js')}}"></script>
+		<!-- Sweet alert -->
+		<script src="{{asset('/js/plugins/sweetalert/sweetalert.min.js')}}"></script>
+		<!-- NouSlider -->
+		<script src="{{asset('/js/plugins/nouslider/jquery.nouislider.min.js')}}"></script>
+		<!-- IonRangeSlider -->
+		<script src="{{asset('/js/plugins/ionRangeSlider/ion.rangeSlider.min.js')}}"></script>
+		<!-- Page-Level Scripts -->
+		<script type="text/javascript">
+			var orderid, url;
+			$(document).ready(function() {
+				$('#datepicker .input-daterange').datepicker({
+					keyboardNavigation: false,
+					forceParse: false,
+					autoclose: true,
+					format: "yyyy-mm-dd"
+				});
+				$('.fh').click(function() {
+
+					var mythis = $(this);
+					orderid = mythis.attr('od_id');
+					url = mythis.attr('url');
+					swal({
+						title: "是否确定现在发货?",
+						type: "warning",
+						showCancelButton: true,
+						confirmButtonColor: "#DD6B55",
+						confirmButtonText: "确定",
+						closeOnConfirm: false
+					}, function() {
+						if (!url)
+							return false;
+
+						$.post(url, {id: orderid, code: $('#code').val()}, function(data) {
+							if (data.code == 1)
+								window.location.reload();
+
+						});
+						swal("开始发货!", "", "success");
+					});
+
+				});
+				$('.jd').click(function() {
+					var url = $(this).attr('url');
+					$.get(url, {id: orderid}, function(data) {
+						if (data.code == 1)
+							window.location.reload();
+
+					});
+				});
+
+			});
+
+		</script>
+
+@endsection

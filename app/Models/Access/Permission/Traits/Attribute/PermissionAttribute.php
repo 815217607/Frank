@@ -32,7 +32,7 @@ trait PermissionAttribute
     public function getEditButtonAttribute()
     {
         if (access()->allow('edit-permissions')) {
-            return '<a href="' . route('admin.access.roles.permissions.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a>';
+            return '<a href="' . route('admin.access.permissions.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a>';
         }
 
         return '';
@@ -44,7 +44,11 @@ trait PermissionAttribute
     public function getDeleteButtonAttribute()
     {
         if (access()->allow('delete-permissions')) {
-            return '<a href="' . route('admin.access.roles.permissions.destroy', $this->id) . '" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a>';
+            return '<a href="' . route('admin.access.permissions.destroy', $this->id) . '" class="btn btn-xs btn-danger" data-method="delete"
+            data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+                 data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
+                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+            ><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a>';
         }
 
         return '';

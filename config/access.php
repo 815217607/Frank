@@ -66,7 +66,16 @@ return [
      * assigned_roles table used by Access to save assigned roles to the database.
      */
     'assigned_roles_table' => 'assigned_roles',
+    /*
+     * Permissions table used by Access to save permissions to the database.
+     */
+    'menus_table' => 'menus',
 
+    /*
+     * PermissionGroup model used by Access to create permissions groups.
+     * Update the group if it is in a different namespace.
+     */
+    'menu' => App\Models\Access\Menu\menu::class,
     /*
      * Configurations for the user
      */

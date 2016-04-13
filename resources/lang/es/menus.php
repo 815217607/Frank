@@ -79,6 +79,7 @@ return [
             'it' => 'Italiano (Italian)',
             'pt-BR' => 'Brazilian Portuguese', //TODO: translate
             'sv' => 'Sueco (Swedish)',
+            'zh' => 'China(simplified)',
         ],
     ],
 ];

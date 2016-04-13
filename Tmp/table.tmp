@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTable{name} extends Migration
+{
+    /**
+     * Run the migrations.
+     * 添加数据迁移字段
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('{lname}', function(Blueprint $table)
+        {
+            $table->increments('id');
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     * 事物回滚
+     * @return void
+     */
+    public function down()
+    {
+        //
+        Schema::dropIfExists('{lname}');
+    }
+}

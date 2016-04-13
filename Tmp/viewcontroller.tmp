@@ -1,0 +1,93 @@
+<?php
+namespace App\Http\Controllers\{home};
+use App\Core\Facades\{name}Service;
+use App\Http\Controllers\Controller;
+use App\Models\{name};
+use Illuminate\Http\Request;
+
+/**
+ * User: fuqixue1987@163.com
+ */
+
+class {name}Controller extends Controller {
+
+    /**
+     * 列表
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
+    public function getIndex(Request $request) {
+        //
+         $pre= $param=$request->all();
+         $info= {name}Service::selectData($param,10);
+         if(isset($pre))$info->appends($pre);
+        return view('{lname}_list',['info'=>$info,'params'=>$pre]);
+
+    }
+
+    /**
+     * 获取单条信息
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
+    public function getShow($id,Request $request){
+        $params=$request->all();
+        $params['where']=array('id'=>$id);
+        $info= {name}Service::info_show($params);
+
+        return view('{lname}_show',['info'=>$info]);
+    }
+
+    /**
+     * 表单模板渲染
+     * @return array|\Illuminate\View\View
+     */
+    public function getAdd(){
+        return view('{lname}_add');
+    }
+    /**
+     * 修改表单模板渲染
+     * @return array|\Illuminate\View\View
+     */
+    public function getEdit($id){
+        $info={name}Service::findById($id);
+        return view('{lname}_edit',['info'=>$info]);
+    }
+
+    /**
+     * 删除
+     * @param $id
+     * @param Request $request
+     * @return string
+     */
+    public function getDel($id){
+        $info={name}Service::delById($id);
+        return view('{lname}_add');
+    }
+
+    /**
+     * 单一更新
+     * @param $id
+     * @param Request $request
+     * @return array|string
+     */
+    public function postEdit($id,Request $request){
+        $param=$request->all();
+        $param['id']=$id;
+        $info={name}Service::update($param);
+        return empty($info)?view('errors.500'):redirect('{home}');
+    }
+
+    /**
+     * create the form for creating a new resource.
+     * 添加
+     * @return Response
+     */
+    public function postAdd(Request $request)
+    {
+        $param=$request->all();
+        $info={name}Service::create($param);
+        return empty($info)?view('errors.500'):redirect('{home}');
+    }
+
+}

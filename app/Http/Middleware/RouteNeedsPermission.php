@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 /**
  * Class RouteNeedsRole
@@ -16,8 +17,9 @@ class RouteNeedsPermission
      * @param  $permission
      * @return mixed
      */
-    public function handle($request, Closure $next, $permission)
+    public function handle(Request $request, Closure $next, $permission)
     {
+
         if (! access()->allow($permission)) {
             return redirect()
                 ->route('frontend.index')

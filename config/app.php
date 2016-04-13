@@ -22,7 +22,7 @@ return [
 	|
 	| The application name for use within the UI of the application
 	*/
-    'name' => 'Laravel 5 Bootstrap',
+    'name' => '易元科技',
 
     /*
     |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -74,7 +74,8 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+//    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'zh'),
 
     /*
     |--------------------------------------------------------------------------
@@ -87,7 +88,8 @@ return [
     |
     */
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+//    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'zh'),
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +185,7 @@ return [
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Creativeorange\Gravatar\GravatarServiceProvider::class,
+
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
@@ -193,6 +195,10 @@ return [
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
          */
         App\Providers\MacroServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
+
+//一下为框架自带
+//        Creativeorange\Gravatar\GravatarServiceProvider::class,
     ],
 
     /*
@@ -246,9 +252,12 @@ return [
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Debugbar'    => Barryvdh\Debugbar\Facade::class,
         'Form'        => Collective\Html\FormFacade::class,
-        'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
+
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
+
+//一下为框架自带
+//        'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
     ],
 
 ];

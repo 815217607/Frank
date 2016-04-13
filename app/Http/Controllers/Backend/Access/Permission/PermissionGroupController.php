@@ -29,7 +29,10 @@ class PermissionGroupController extends Controller
     {
         $this->groups = $groups;
     }
-
+    public function  index(){
+        return view('backend.access.roles.permissions.groups.index')
+            ->withGroups($this->groups->getAllGroups());
+    }
     /**
      * @param  CreatePermissionGroupRequest $request
      * @return \Illuminate\View\View
@@ -46,7 +49,7 @@ class PermissionGroupController extends Controller
     public function store(StorePermissionGroupRequest $request)
     {
         $this->groups->store($request->all());
-        return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.groups.created'));
+        return redirect()->route('admin.access.groups.permission-group.index')->withFlashSuccess(trans('alerts.backend.permissions.groups.created'));
     }
 
     /**
@@ -68,7 +71,7 @@ class PermissionGroupController extends Controller
     public function update($id, UpdatePermissionGroupRequest $request)
     {
         $this->groups->update($id, $request->all());
-        return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.groups.created'));
+        return redirect()->route('admin.access.groups.permission-group.index')->withFlashSuccess(trans('alerts.backend.permissions.groups.created'));
     }
 
     /**
@@ -79,7 +82,7 @@ class PermissionGroupController extends Controller
     public function destroy($id, DeletePermissionGroupRequest $request)
     {
         $this->groups->destroy($id);
-        return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.groups.deleted'));
+        return redirect()->route('admin.access.groups.permission-group.index')->withFlashSuccess(trans('alerts.backend.permissions.groups.deleted'));
     }
 
     /**

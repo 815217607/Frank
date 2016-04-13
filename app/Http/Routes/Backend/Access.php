@@ -3,7 +3,7 @@
 Route::group([
     'prefix'     => 'access',
     'namespace'  => 'Access',
-    'middleware' => 'access.routeNeedsPermission:view-access-management',
+    'middleware' => 'access.routeNeedsPermission:user-view-management',
 ], function() {
     /**
      * User Management
@@ -37,12 +37,21 @@ Route::group([
     /**
      * Permission Management
      */
-    Route::group(['prefix' => 'roles', 'namespace' => 'Permission'], function() {
-        Route::resource('permission-group', 'PermissionGroupController', ['except' => ['index', 'show']]);
+    Route::group(['namespace' => 'Permission'], function() {
         Route::resource('permissions', 'PermissionController', ['except' => ['show']]);
-
         Route::group(['prefix' => 'groups'], function() {
-            Route::post('update-sort', 'PermissionGroupController@updateSort')->name('admin.access.roles.groups.update-sort');
+            Route::resource('permission-group', 'PermissionGroupController', ['except' => ['show']]);
+            Route::post('update-sort', 'PermissionGroupController@updateSort')->name('admin.access.groups.update-sort');
         });
     });
+
+    /**
+     * Menu Management
+     */
+    Route::group(['namespace' => 'Menu'], function() {
+        Route::resource('menus', 'MenuController');
+    });
+
+
+
 });

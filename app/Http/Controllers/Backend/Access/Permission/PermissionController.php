@@ -78,7 +78,7 @@ class PermissionController extends Controller
     public function store(StorePermissionRequest $request)
     {
         $this->permissions->create($request->except('permission_roles'), $request->only('permission_roles'));
-        return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.created'));
+        return redirect()->route('admin.access.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.created'));
     }
 
     /**
@@ -106,7 +106,7 @@ class PermissionController extends Controller
     public function update($id, UpdatePermissionRequest $request)
     {
         $this->permissions->update($id, $request->except('permission_roles'), $request->only('permission_roles'));
-        return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.updated'));
+        return redirect()->route('admin.access.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.updated'));
     }
 
     /**
@@ -117,6 +117,6 @@ class PermissionController extends Controller
     public function destroy($id, DeletePermissionRequest $request)
     {
         $this->permissions->destroy($id);
-        return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.deleted'));
+        return redirect()->route('admin.access.permissions.index')->withFlashSuccess(trans('alerts.backend.permissions.deleted'));
     }
 }
