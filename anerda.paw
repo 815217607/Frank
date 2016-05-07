@@ -73,7 +73,7 @@
     <object type="LMREQUEST" id="z103">
         <attribute name="body" type="string">[{"data":{"json":"{\\"username\\":\\"15982018492\\",\\"password\\":\\"123456\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="uuid" type="string">64E8CBF1-5CC2-49B5-8FD3-F399C5375CC9</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E0A13F27-076E-4036-8AB9-EEFB1B6B6561"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"sign-in"]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"577BF93E-47FD-4231-9E68-6FBB18D8D78F"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"sign-in"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -136,7 +136,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">[{"data":{"json":"{\\"username\\":\\"15982018492\\",\\"password\\":\\"123456\\",\\"code\\":\\"284343\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"username\\":\\"18683052123\\",\\"password\\":\\"123456\\",\\"code\\":\\"267710\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">注册</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
@@ -506,7 +506,7 @@
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z141"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z143">
-        <attribute name="value" type="string">8d38c9c0ea8e11e5b665ddee479e0feb</attribute>
+        <attribute name="value" type="string">a3293ff0103511e6a280bd548c297644</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">token</attribute>
         <attribute name="enabled" type="bool">1</attribute>
@@ -516,9 +516,9 @@
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z144"></relationship>
     </object>
     <object type="LMREQUEST" id="z144">
-        <attribute name="body" type="string">[{"data":{"json":"{\\"username\\":\\"18622222222\\",\\"password\\":\\"123456\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"username\\":\\"18622222222\\",\\"password\\":\\"12345\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="uuid" type="string">DDA0ABB6-FFFC-4CDB-95A5-CCFF47CF7B3B</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E0A13F27-076E-4036-8AB9-EEFB1B6B6561"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"transfer\\/1"]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"577BF93E-47FD-4231-9E68-6FBB18D8D78F"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"transfer\\/1"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -529,7 +529,7 @@
         <attribute name="name" type="string">转让车辆车主</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z130"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z162 z143 z161"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z143 z161 z162"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z145">
         <attribute name="value" type="string">application/json</attribute>
