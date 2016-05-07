@@ -68,16 +68,15 @@ class MenuComposer
             }
         }
             $psers= Permission::query()->where(function($query)use($permissions,$roles){
-                $query->whereExists(function($query) use($roles){
-//                    get_class($query);
-                    $query->select(DB::raw(1))
-                        ->from('permission_role')
-                        ->whereRaw('permission_role.permission_id = permissions.id');
-                    if(!access()->allow('user-view-management'))
-                    $query->whereIn('role_id',$roles);
-                });
-                if(!access()->allow('user-view-management'))
-                $query->OrwhereIn('permissions.id',$permissions);
+                if(!access()->allow('user-view-management')){
+                    $query->whereExists(function($query) use($roles){
+                        $query->select(DB::raw(1))
+                            ->from('permission_role')
+                            ->whereRaw('permission_role.permission_id = permissions.id');
+                        $query->whereIn('role_id',$roles);
+                    });
+                    $query->OrwhereIn('permissions.id',$permissions);
+                }
 
             })->join('menus','menus.permission_id','=','permissions.id')->orderBy('menus.sort','desc')->get(['menus.*','permissions.name as permission_name'])->toArray();
 
