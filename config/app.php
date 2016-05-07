@@ -188,7 +188,7 @@ return [
 
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
-        HieuLe\Active\ActiveServiceProvider::class,
+        App\Providers\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
