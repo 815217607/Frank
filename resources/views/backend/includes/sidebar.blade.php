@@ -37,7 +37,7 @@
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
             @endauth
-            <!--系统自带菜单-->
+            {{--<!--系统自带菜单-->--}}
             {{--<li class="{{ Active::pattern('admin/access/*') }} treeview">--}}
                 {{--<a href="#">--}}
                     {{--<span>{{ trans('menus.backend.access.title') }}</span>--}}

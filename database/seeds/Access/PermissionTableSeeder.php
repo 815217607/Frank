@@ -285,6 +285,52 @@ class PermissionTableSeeder extends Seeder
         $deletePermissions->updated_at   = Carbon::now();
         $deletePermissions->save();
 
+        //
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'user-view-management';
+        $deletePermissions->display_name = 'User View Management';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 4;
+        $deletePermissions->sort         = 7;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'roles-view-management';
+        $deletePermissions->display_name = 'Roles View Management';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 4;
+        $deletePermissions->sort         = 7;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'group-view-management';
+        $deletePermissions->display_name = 'Delete Permissions';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 4;
+        $deletePermissions->sort         = 7;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
+        $permission_model                = config('access.permission');
+        $deletePermissions               = new $permission_model;
+        $deletePermissions->name         = 'permissions-view-management';
+        $deletePermissions->display_name = 'Permissions View Management';
+        $deletePermissions->system       = true;
+        $deletePermissions->group_id     = 4;
+        $deletePermissions->sort         = 7;
+        $deletePermissions->created_at   = Carbon::now();
+        $deletePermissions->updated_at   = Carbon::now();
+        $deletePermissions->save();
+
         if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
