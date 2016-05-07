@@ -16,9 +16,6 @@ class MenuTable extends Seeder
         }
 
 
-            DB::statement('TRUNCATE TABLE ' . 'menus' . ' CASCADE');
-
-
         //Add the master administrator, user id of 1
         $menus = [
             [
