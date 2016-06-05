@@ -26,7 +26,7 @@ return [
                     'create' => '创建组',
                     'edit' => '编辑组',
                     'main' => '组',
-                    'management' => '组管理',
+                    'management' => '权限组管理',
                 ],
                 'main' => '权限',
                 'management' => '权限管理',

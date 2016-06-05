@@ -68,25 +68,25 @@
                     {{--@endauth--}}
                 {{--</ul>--}}
             {{--</li>--}}
-            @permission('menu-view-management')
-            <!-- Optionally, you can add icons to the links -->
-            <li class="{{ Active::pattern('admin/menu') }}">
-                <a href="{!! route('admin.access.menus.index') !!}"><span>{{ trans('menus.backend.access.menus.management') }}</span></a>
-            </li>
-            @endauth
+            {{--@permission('menu-view-management')--}}
+            {{--<!-- Optionally, you can add icons to the links -->--}}
+            {{--<li class="{{ Active::pattern('admin/access/menus*') }}">--}}
+                {{--<a href="{!! route('admin.access.menus.index') !!}"><span>{{ trans('menus.backend.access.menus.management') }}</span></a>--}}
+            {{--</li>--}}
+            {{--@endauth--}}
             <!-- your setting permission menu -->
             @if($menu_info)
             @foreach($menu_info as $key=>$val)
             @permission($val['permission_name'])
                 @if(isset($val['children']))
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="{{ Active::pattern($val['active']) }} treeview">
+                    <li class="Hehe {{ Active::pattern($val['active']) }} treeview">
                         <a href="#"><span>{{ $val['lang_falg']?trans($val['lang_key']):$val['menu_name'] }}</span>
                         <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu menu-open" style="display: none; {{ Active::pattern($val['active'], 'display: block;') }}">
                             @foreach($val['children'] as $v)
-                            <li class="">
+                            <li class="{{Active::pattern($v['active'])}}">
                                 <a href="{!! $v['url_falg']?url($v['url']):route($v['url']) !!}">
                                     <span>{{ $v['lang_falg']?trans($v['lang_key']):$v['menu_name'] }}</span>
                                 </a>

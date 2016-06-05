@@ -1,15 +1,17 @@
 /*
- Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
- Source Server         : 192.168.1.20
- Source Server Version : 50628
- Source Host           : 192.168.1.20
- Source Database       : boilerplate
+ Source Server         : vagrant local
+ Source Server Type    : MySQL
+ Source Server Version : 50630
+ Source Host           : 192.168.33.100
+ Source Database       : yuanphp
 
- Target Server Version : 50628
+ Target Server Type    : MySQL
+ Target Server Version : 50630
  File Encoding         : utf-8
 
- Date: 05/07/2016 22:36:48 PM
+ Date: 06/05/2016 15:07:00 PM
 */
 
 SET NAMES utf8;
@@ -75,29 +77,13 @@ CREATE TABLE `menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `menus`
 -- ----------------------------
 BEGIN;
-INSERT INTO `menus` VALUES ('1', '0', '会员管理', 'menus.backend.access.title', '#', 'D', '2', null, '0', '1', '0', 'admin/access/*', '1', '0', '2016-05-07 14:34:53', '2016-05-07 14:34:53'), ('2', '1', '角色管理', 'menus.backend.access.roles.management', 'admin/access/roles', 'D', '23', null, '0', '1', '1', 'admin/access/roles/*', '1', '0', '2016-05-07 14:34:53', '2016-05-07 14:34:53'), ('3', '1', '会员维护', 'menus.backend.access.title', 'admin.access.users.index', 'D', '22', null, '0', '0', '0', 'admin/access/users/*', '1', '0', '2016-05-07 14:34:53', '2016-05-07 14:34:53'), ('4', '1', '权限维护', 'menus.backend.access.permissions.management', 'admin.access.permissions.index', 'D', '25', null, '0', '0', '1', 'admin/access/permissions*', '1', '5', '2016-05-07 14:34:53', '2016-05-07 14:34:53'), ('5', '1', '权限组维护', 'menus.backend.access.permissions.groups.management', 'admin.access.groups.permission-group.index', 'D', '24', null, '0', '0', '1', 'admin/access/groups*', '1', '6', '2016-05-07 14:34:53', '2016-05-07 14:34:53');
-COMMIT;
-
--- ----------------------------
---  Table structure for `migrations`
--- ----------------------------
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE `migrations` (
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
---  Records of `migrations`
--- ----------------------------
-BEGIN;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table', '1'), ('2014_10_12_100000_create_password_resets_table', '1'), ('2015_12_28_171741_create_social_logins_table', '1'), ('2015_12_29_015055_setup_access_tables', '1'), ('2016_02_29_021851_create_table_friendly_link', '1'), ('2016_03_04_065525_create_menus_table', '1'), ('2016_03_08_072251_create_user_sessions_table', '1');
+INSERT INTO `menus` VALUES ('1', '0', '用户&权限', 'menus.backend.access.title', '#', 'D', '2', null, '0', '1', '0', 'admin/access/*', '1', '0', '2016-05-07 14:34:53', '2016-06-05 07:06:14'), ('2', '1', '角色管理', 'menus.backend.access.roles.management', 'admin/access/roles', 'D', '23', null, '0', '1', '1', 'admin/access/roles*', '1', '0', '2016-05-07 14:34:53', '2016-06-05 06:33:18'), ('3', '1', '会员维护', 'menus.backend.access.title', 'admin.access.users.index', 'D', '22', null, '0', '0', '0', 'admin/access/users*', '1', '0', '2016-05-07 14:34:53', '2016-06-05 06:33:47'), ('4', '1', '权限维护', 'menus.backend.access.permissions.management', 'admin.access.permissions.index', 'D', '25', null, '0', '0', '1', 'admin/access/permissions*', '1', '5', '2016-05-07 14:34:53', '2016-05-07 14:34:53'), ('5', '1', '权限组维护', 'menus.backend.access.permissions.groups.management', 'admin.access.groups.permission-group.index', 'D', '24', null, '0', '0', '1', 'admin/access/groups*', '1', '6', '2016-05-07 14:34:53', '2016-05-07 14:34:53'), ('6', '1', '菜单管理', 'menus.backend.access.menus.management', 'admin/access/menus', 'D', '26', null, '0', '1', '0', 'admin/access/menus', '1', '0', '2016-06-05 06:26:36', '2016-06-05 06:26:54');
 COMMIT;
 
 -- ----------------------------
@@ -202,13 +188,13 @@ CREATE TABLE `permissions` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `permissions_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `permissions`
 -- ----------------------------
 BEGIN;
-INSERT INTO `permissions` VALUES ('1', '1', 'view-backend', 'View Backend', '1', '1', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('2', '1', 'view-access-management', 'View Access Management', '1', '2', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('3', '2', 'create-users', 'Create Users', '1', '5', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('4', '2', 'edit-users', 'Edit Users', '1', '6', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('5', '2', 'delete-users', 'Delete Users', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('6', '2', 'change-user-password', 'Change User Password', '1', '8', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('7', '2', 'deactivate-users', 'Deactivate Users', '1', '9', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('8', '2', 'reactivate-users', 'Re-Activate Users', '1', '11', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('9', '2', 'undelete-users', 'Restore Users', '1', '13', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('10', '2', 'permanently-delete-users', 'Permanently Delete Users', '1', '14', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('11', '2', 'resend-user-confirmation-email', 'Resend Confirmation E-mail', '1', '15', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('12', '3', 'create-roles', 'Create Roles', '1', '2', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('13', '3', 'edit-roles', 'Edit Roles', '1', '3', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('14', '3', 'delete-roles', 'Delete Roles', '1', '4', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('15', '4', 'create-permission-groups', 'Create Permission Groups', '1', '1', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('16', '4', 'edit-permission-groups', 'Edit Permission Groups', '1', '2', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('17', '4', 'delete-permission-groups', 'Delete Permission Groups', '1', '3', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('18', '4', 'sort-permission-groups', 'Sort Permission Groups', '1', '4', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('19', '4', 'create-permissions', 'Create Permissions', '1', '5', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('20', '4', 'edit-permissions', 'Edit Permissions', '1', '6', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('21', '4', 'delete-permissions', 'Delete Permissions', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('22', '4', 'user-view-management', 'User View Management', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('23', '4', 'roles-view-management', 'Roles View Management', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('24', '4', 'group-view-management', 'Delete Permissions', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('25', '4', 'permissions-view-management', 'Permissions View Management', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54');
+INSERT INTO `permissions` VALUES ('1', '1', 'view-backend', 'View Backend', '1', '1', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('2', '1', 'view-access-management', 'View Access Management', '1', '2', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('3', '2', 'create-users', 'Create Users', '1', '5', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('4', '2', 'edit-users', 'Edit Users', '1', '6', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('5', '2', 'delete-users', 'Delete Users', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('6', '2', 'change-user-password', 'Change User Password', '1', '8', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('7', '2', 'deactivate-users', 'Deactivate Users', '1', '9', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('8', '2', 'reactivate-users', 'Re-Activate Users', '1', '11', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('9', '2', 'undelete-users', 'Restore Users', '1', '13', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('10', '2', 'permanently-delete-users', 'Permanently Delete Users', '1', '14', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('11', '2', 'resend-user-confirmation-email', 'Resend Confirmation E-mail', '1', '15', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('12', '3', 'create-roles', 'Create Roles', '1', '2', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('13', '3', 'edit-roles', 'Edit Roles', '1', '3', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('14', '3', 'delete-roles', 'Delete Roles', '1', '4', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('15', '4', 'create-permission-groups', 'Create Permission Groups', '1', '1', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('16', '4', 'edit-permission-groups', 'Edit Permission Groups', '1', '2', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('17', '4', 'delete-permission-groups', 'Delete Permission Groups', '1', '3', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('18', '4', 'sort-permission-groups', 'Sort Permission Groups', '1', '4', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('19', '4', 'create-permissions', 'Create Permissions', '1', '5', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('20', '4', 'edit-permissions', 'Edit Permissions', '1', '6', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('21', '4', 'delete-permissions', 'Delete Permissions', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('22', '4', 'user-view-management', 'User View Management', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('23', '4', 'roles-view-management', 'Roles View Management', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('24', '4', 'group-view-management', 'Delete Permissions', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('25', '4', 'permissions-view-management', 'Permissions View Management', '1', '7', '2016-05-07 14:34:54', '2016-05-07 14:34:54'), ('26', '4', 'menu-view-management', 'Manage Menus', '1', '0', '2016-06-05 06:25:03', '2016-06-05 06:25:40');
 COMMIT;
 
 -- ----------------------------
@@ -284,7 +270,7 @@ CREATE TABLE `users` (
 --  Records of `users`
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES ('1', 'Admin Istrator', 'admin@admin.com', '$2y$10$Cyvyf3rNqLAD4sotXaqj3eZuIhRN.wJQA3xmI89q966cDnj4vJSa6', '1', '9669b185b5f631f868175130c65850c3', '1', null, '2016-05-07 14:34:53', '2016-05-07 14:34:53', null), ('2', 'Default User', 'user@user.com', '$2y$10$481xA8To0Je.PvpOsxGvIOSxmsTSkj/A5Ua7KRWfegmzdFqF0YXoq', '1', '341639eddeadd2a9bfe7d1cba129c2f2', '1', null, '2016-05-07 14:34:53', '2016-05-07 14:34:53', null);
+INSERT INTO `users` VALUES ('1', 'Administrator', 'admin@admin.com', '$2y$10$Y/HAdaszCWRnLD1R6V8Oue7SzHq6WxxbSzn1Ja8UbOmxcPPjhdGZq', '1', '9669b185b5f631f868175130c65850c3', '1', 'e26EfXOv3K9GZLnEtKbKnq5e8K77qwN9CWL32LoaFgk2uO6UvLEoX1UwKzEy', '2016-05-07 14:34:53', '2016-06-05 06:53:43', null), ('2', 'Default User', 'user@user.com', '$2y$10$Y/HAdaszCWRnLD1R6V8Oue7SzHq6WxxbSzn1Ja8UbOmxcPPjhdGZq', '1', '341639eddeadd2a9bfe7d1cba129c2f2', '1', null, '2016-05-07 14:34:53', '2016-05-07 14:34:53', null);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -15,17 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
-        if (env('DB_CONNECTION') == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
-
-        $this->call(AccessTableSeeder::class);
-
-        if (env('DB_CONNECTION') == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
-
+        
+        
+        
         Model::reguard();
     }
 }

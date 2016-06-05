@@ -1,32 +1,17 @@
 {
-    "name": "rappasoft/laravel-5-boilerplate",
-    "description": "The Laravel Framework Boilerplate Project.",
-    "keywords": ["framework", "laravel", "boilerplate"],
+    "name": "activate/ieyuan",
+    "description": "empty",
+    "keywords": [""],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*",
+        "laravel/framework": "5.1.*",
+        "laravelcollective/html": "5.1.*",
         "laracasts/utilities": "~2.0",
-        "laravel/socialite": "^2.0",
-        "creativeorange/gravatar": "~1.0",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "hieu-le/active": "~2.0",
-        "arcanedev/log-viewer": "~3.0",
         "webpatser/laravel-uuid": "1.*",
         "doctrine/dbal": "2.5",
         "intervention/image": "2.3.5",
-        "maatwebsite/excel": "v2.1.1",
-        "leancloud/leancloud-sdk": "v0.2.3"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*",
-        "barryvdh/laravel-debugbar": "^2.1"
     },
     "autoload": {
         "classmap": [
@@ -38,11 +23,7 @@
         "files": [
             "app/helpers.php"
         ]
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
+
     },
     "scripts": {
         "post-root-package-install": [

@@ -9,10 +9,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Core\Auth\AppUserAuth;
 use App\Core\Auth\SmsService;
 
 
+use App\Core\Facades\AppUserAuth;
 use App\Core\Facades\UserService;
 
 use App\Models\Access\User\User;
