@@ -60,7 +60,7 @@ return [
                     'name' => '名字',
                     'permission' => '权限',
                     'roles' => '角色',
-                    'system' => '体系',
+                    'system' => '系统权限',
                     'total' => '总权限|权限总数',
                     'users' => '用户组',
                 ],
