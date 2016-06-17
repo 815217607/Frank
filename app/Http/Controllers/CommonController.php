@@ -5,11 +5,10 @@
  * Time: 16:03
  */
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 
 use App\Core\Facades\FileUploadService;
-
 use App\Core\Facades\LeanCloudService;
 use App\Http\Controllers\Controller;
 use App\Util\ResponseUtil;
