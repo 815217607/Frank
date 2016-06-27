@@ -36,7 +36,7 @@ class ResponseMiddleware
                 $datetime=date('Y-m-d h:i:s',time());//日志内记录时间
                 $filename=$directory.'/'.$date.'.log';
 
-                $sizes=1024*3;//日志文件大小,10*1024*1024
+                $sizes=1024*10*1024;//日志文件大小,10*1024*1024
                 if(file_exists($directory.'/'.$date.'.log')){
                     $filesize=filesize($directory.'/'.$date.'.log');
                     if($filesize > $sizes){
