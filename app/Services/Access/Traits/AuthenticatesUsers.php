@@ -2,6 +2,7 @@
 
 namespace App\Services\Access\Traits;
 
+use App\Models\Access\User\Operator;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Events\Frontend\Auth\UserLoggedIn;
@@ -85,7 +86,7 @@ trait AuthenticatesUsers
      */
     public function loginUsername()
     {
-        return 'email';
+        return 'name';
     }
 
     /**

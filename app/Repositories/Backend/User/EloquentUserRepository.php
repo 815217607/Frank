@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Backend\User;
 
-use App\Models\Access\User\User;
+use App\Models\Access\User\Operator;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
@@ -46,9 +46,9 @@ class EloquentUserRepository implements UserContract
     public function findOrThrowException($id, $withRoles = false)
     {
         if ($withRoles) {
-            $user = User::with('roles')->withTrashed()->find($id);
+            $user = Operator::with('roles')->withTrashed()->find($id);
         } else {
-            $user = User::withTrashed()->find($id);
+            $user = Operator::withTrashed()->find($id);
         }
 
         if (!is_null($user)) {
@@ -67,7 +67,7 @@ class EloquentUserRepository implements UserContract
      */
     public function getUsersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc')
     {
-        return User::where('status', $status)
+        return Operator::where('status', $status)
             ->orderBy($order_by, $sort)
             ->paginate($per_page);
     }
@@ -78,7 +78,7 @@ class EloquentUserRepository implements UserContract
      */
     public function getDeletedUsersPaginated($per_page)
     {
-        return User::onlyTrashed()
+        return Operator::onlyTrashed()
             ->paginate($per_page);
     }
 
@@ -89,7 +89,7 @@ class EloquentUserRepository implements UserContract
      */
     public function getAllUsers($order_by = 'id', $sort = 'asc')
     {
-        return User::orderBy($order_by, $sort)
+        return Operator::orderBy($order_by, $sort)
             ->get();
     }
 
@@ -287,7 +287,7 @@ class EloquentUserRepository implements UserContract
         //Figure out if email is not the same
         if ($user->email != $input['email']) {
             //Check to see if email exists
-            if (User::where('email', '=', $input['email'])->first()) {
+            if (Operator::where('email', '=', $input['email'])->first()) {
                 throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
             }
 
@@ -339,7 +339,7 @@ class EloquentUserRepository implements UserContract
      */
     private function createUserStub($input)
     {
-        $user                    = new User;
+        $user                    = new Operator;
         $user->name              = $input['name'];
         $user->email             = $input['email'];
         $user->password          = bcrypt($input['password']);

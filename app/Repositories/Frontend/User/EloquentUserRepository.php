@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Frontend\User;
 
-use App\Models\Access\User\User;
+use App\Models\Access\User\Operator;
 use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
@@ -35,7 +35,7 @@ class EloquentUserRepository implements UserContract
      */
     public function find($id)
     {
-        return User::findOrFail($id);
+        return Operator::findOrFail($id);
     }
 
     /**
@@ -43,9 +43,9 @@ class EloquentUserRepository implements UserContract
      * @return bool
      */
     public function findByEmail($email) {
-        $user = User::where('email', $email)->first();
+        $user = Operator::where('email', $email)->first();
 
-        if ($user instanceof User)
+        if ($user instanceof Operator)
             return $user;
 
         return false;
@@ -57,9 +57,9 @@ class EloquentUserRepository implements UserContract
      * @throws GeneralException
      */
     public function findByToken($token) {
-        $user = User::where('confirmation_code', $token)->first();
+        $user = Operator::where('confirmation_code', $token)->first();
 
-        if (! $user instanceof User)
+        if (! $user instanceof Operator)
             throw new GeneralException(trans('exceptions.frontend.auth.confirmation.not_found'));
 
         return $user;
@@ -73,7 +73,7 @@ class EloquentUserRepository implements UserContract
     public function create(array $data, $provider = false)
     {
         if ($provider) {
-            $user = User::create([
+            $user = Operator::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => null,
@@ -82,7 +82,7 @@ class EloquentUserRepository implements UserContract
                 'status' => 1,
             ]);
         } else {
-            $user = User::create([
+            $user = Operator::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
@@ -184,7 +184,7 @@ class EloquentUserRepository implements UserContract
     public function sendConfirmationEmail($user)
     {
         //$user can be user instance or id
-        if (! $user instanceof User) {
+        if (! $user instanceof Operator) {
             $user = $this->find($user);
         }
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Request;
 use App\Services\Access\Traits\ConfirmUsers;
 use App\Services\Access\Traits\UseSocialite;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -23,7 +25,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Where to redirect users after they logout
@@ -40,3 +42,18 @@ class AuthController extends Controller
         $this->user = $user;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
