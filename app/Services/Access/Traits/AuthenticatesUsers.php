@@ -2,7 +2,7 @@
 
 namespace App\Services\Access\Traits;
 
-use App\Models\Access\User\Operator;
+use App\Models\Access\User\User;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Events\Frontend\Auth\UserLoggedIn;

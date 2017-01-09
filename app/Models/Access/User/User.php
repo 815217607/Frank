@@ -17,6 +17,8 @@ class User extends Authenticatable
 
     use SoftDeletes, UserAccess, UserAttribute, UserRelationship;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are not mass assignable.
      *
