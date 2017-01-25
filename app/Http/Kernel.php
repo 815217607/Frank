@@ -42,7 +42,6 @@ class Kernel extends HttpKernel
         ],
         'admin' => [
             'web',
-            'auth',
             'access.routeNeedsPermission:view-backend',
         ],
 
@@ -67,8 +66,10 @@ class Kernel extends HttpKernel
         /**
          * Access Middleware
          */
+        'admin_auth' => \App\Http\Middleware\AuthAdmin::class,
         'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
+
     ];
 //    public function __construct(Application $app, Router $router){
 //

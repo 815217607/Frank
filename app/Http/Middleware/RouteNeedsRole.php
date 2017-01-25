@@ -18,9 +18,11 @@ class RouteNeedsRole
      */
     public function handle($request, Closure $next, $role)
     {
+
+
         if (! access()->hasRole($role)) {
             return redirect()
-                ->route('frontend.auth.login')
+                ->route('frontend.index')
                 ->withFlashDanger(trans('auth.general_error'));
         }
 

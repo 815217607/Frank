@@ -9,11 +9,11 @@ Route::group(['namespace' => 'Auth'], function () {
      * These routes require the user to be logged in
      */
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('logout', 'AuthController@logout')->name('auth.logout');
+        Route::get('logout', 'AuthController@logout')->name('home.logout');
 
         // Change Password Routes
-        Route::get('password/change', 'PasswordController@showChangePasswordForm')->name('auth.password.change');
-        Route::post('password/change', 'PasswordController@changePassword')->name('auth.password.update');
+        Route::get('password/change', 'PasswordController@showChangePasswordForm')->name('home.password.change');
+        Route::post('password/change', 'PasswordController@changePassword')->name('home.password.update');
     });
 
     /**
@@ -21,13 +21,13 @@ Route::group(['namespace' => 'Auth'], function () {
      */
     Route::group(['middleware' => 'guest'], function () {
         // Authentication Routes
-        Route::get('login', 'AuthController@showLoginForm')
-            ->name('auth.login');
-        Route::post('login', 'AuthController@login');
+        Route::get('home/login', 'AuthController@showLoginForm')
+            ->name('home.login');
+        Route::post('home/login', 'AuthController@login');
 
         // Socialite Routes
         Route::get('login/{provider}', 'AuthController@loginThirdParty')
-            ->name('auth.provider');
+            ->name('web.provider');
 
         // Registration Routes
 //        Route::get('register', 'AuthController@showRegistrationForm')
@@ -35,10 +35,10 @@ Route::group(['namespace' => 'Auth'], function () {
 //        Route::post('register', 'AuthController@register');
 
         // Confirm Account Routes
-        Route::get('account/confirm/{token}', 'AuthController@confirmAccount')
-            ->name('account.confirm');
-        Route::get('account/confirm/resend/{token}', 'AuthController@resendConfirmationEmail')
-            ->name('account.confirm.resend');
+//        Route::get('account/confirm/{token}', 'AuthController@confirmAccount')
+//            ->name('account.confirm');
+//        Route::get('account/confirm/resend/{token}', 'AuthController@resendConfirmationEmail')
+//            ->name('account.confirm.resend');
 
         // Password Reset Routes
         Route::get('password/reset/{token?}', 'PasswordController@showResetForm')

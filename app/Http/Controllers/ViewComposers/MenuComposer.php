@@ -51,6 +51,8 @@ class MenuComposer
     public function compose(View $view)
     {
 
+        $info=Auth::guard('admin')->user();
+        dump($info);die;
         $user=Auth::user()->toArray();
         $psers=[];
         if($user){
