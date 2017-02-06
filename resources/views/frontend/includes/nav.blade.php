@@ -40,7 +40,7 @@
 
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li>{!! link_to('login', trans('navs.frontend.login')) !!}</li>
+                    <li>{!! link_to_route('home.login', trans('navs.frontend.login')) !!}</li>
                     {{--<li>{!! link_to('register', trans('navs.frontend.register')) !!}</li>--}}
                 @else
                     <li class="dropdown">
@@ -52,14 +52,18 @@
                             <li>{!! link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) !!}</li>
 
                             @if (access()->user()->canChangePassword())
-                                <li>{!! link_to_route('auth.password.change', trans('navs.frontend.user.change_password')) !!}</li>
+                                <li>{!! link_to_route('home.password.change', trans('navs.frontend.user.change_password')) !!}</li>
                             @endif
 
                             @permission('view-backend')
+
                                 <li>{!! link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) !!}</li>
+
+                                {{--<li>{!! link_to_route('user.dashboard', trans('navs.frontend.user.administration')) !!}</li>--}}
+
                             @endauth
 
-                            <li>{!! link_to_route('auth.logout', trans('navs.general.logout')) !!}</li>
+                            <li>{!! link_to_route('home.logout', trans('navs.general.logout')) !!}</li>
                         </ul>
                     </li>
                 @endif

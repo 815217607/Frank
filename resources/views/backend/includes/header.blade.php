@@ -120,7 +120,7 @@
                         <!-- The user image in the navbar-->
                         <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ access()->user()->name }}</span>
+                        <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
@@ -128,7 +128,7 @@
                         <li class="user-header">
                             <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="img-circle" alt="User Image" />
                             <p>
-                                {!! access()->user()->name !!} - {{ trans('roles.web_developer') }}
+                                {!! Auth::guard('admin')->user()->name !!} - {{ trans('roles.web_developer') }}
                                 <small>{{ trans('strings.backend.general.member_since') }}</small>
                             </p>
                         </li>
@@ -150,7 +150,7 @@
                                 <a href="#" class="btn btn-default btn-flat">{{ trans('navs.backend.button') }}</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{!! route('auth.logout') !!}" class="btn btn-default btn-flat">{{ trans('navs.general.logout') }}</a>
+                                <a href="{!! route('manage.logout') !!}" class="btn btn-default btn-flat">{{ trans('navs.general.logout') }}</a>
                             </div>
                         </li>
                     </ul>

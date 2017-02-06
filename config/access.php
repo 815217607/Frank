@@ -48,7 +48,8 @@ return [
      * permission_user table used by Access to save relationship between permissions and users to the database.
      * This table is only for permissions that belong directly to a specific user and not a role
      */
-    'permission_user_table' => 'permission_user',
+//    'permission_user_table' => 'permission_user',
+    'permission_user_table' => 'permission_admin',
 
     /*
      * Table that specifies if one permission is dependent on another.
@@ -88,7 +89,7 @@ return [
         /*
          * The role the user is assigned to when they sign up from the frontend, not namespaced
          */
-        'default_role' => 'User',
+        'default_role' => 'Admin',
         //'default_role' => 2,
 
         /*

@@ -65,7 +65,8 @@ Route::post('upload', function (\Illuminate\Http\Request $request) {
  * Namespaces indicate folder structure
  * Admin middleware groups web, auth, and routeNeedsPermission
  */
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' =>'admin'], function () {
+
     /**
      * These routes need view-backend permission
      * (good if you want to allow more than one group in the backend,
@@ -73,7 +74,34 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
-    require (__DIR__ . '/Routes/Backend/Dashboard.php');
+//    require (__DIR__ . '/Routes/Backend/Dashboard.php');
+    Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+
+//    Route::any('/', 'AuthController@login')->name('manage.login');
+//    Route::any('login', 'AuthController@login')->name('manage.login');
+//    Route::any('logout', 'AuthController@logout')->name('manage.logout');
+    /**
+     * Menu Auth
+     */
+//    Route::group(['prefix' => 'auth','namespace' => 'Auth','middleware' => 'web'], function() {
+
+//        Route::get('login', 'AuthController@login')->name('auth.login');
+//        Route::get('/123', function(){
+//            echo '13';
+//        });
+//        Route::any('logout', 'AuthController@logout');
+//        Route::any('register', 'AuthController@register');
+//    });
+
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
+});
+
+Route::group(['prefix' => 'manage','namespace' => 'Backend\Auth'], function () {
+
+//    Route::auth();
+    Route::any('/', 'AuthController@login')->name('manage.login');
+    Route::get('login', 'AuthController@login')->name('manage.login');
+    Route::any('logout', 'AuthController@logout')->name('manage.logout');
+//    Route::get('/home', 'HomeController@index');
 });

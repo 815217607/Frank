@@ -52,6 +52,4 @@ Route::group([
         Route::resource('menus', 'MenuController');
     });
 
-
-
 });
