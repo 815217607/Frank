@@ -12,7 +12,7 @@ class CreateManagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('manages', function (Blueprint $table) {
+        Schema::create('member', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('username', 128);
@@ -30,6 +30,6 @@ class CreateManagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('manages');
+        Schema::drop('member');
     }
 }

@@ -2,13 +2,14 @@
 
 namespace App\Services\Access\Traits;
 
+use App\Http\Requests\Backend\Auth\LoginRequest;
 use App\Models\Access\User\User;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use App\Http\Requests\Frontend\Auth\LoginRequest;
+//use App\Http\Requests\Frontend\Auth\LoginRequest;
 
 /**
  * Class AuthenticatesUsers
@@ -23,7 +24,9 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('frontend.auth.login')
+
+        $loginView=property_exists($this, 'loginView') ? $this->loginView : 'frontend.auth.login';
+        return view($loginView)
             ->withSocialiteLinks($this->getSocialLinks());
     }
 
@@ -33,6 +36,7 @@ trait AuthenticatesUsers
      */
     public function login(LoginRequest $request)
     {
+
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
@@ -43,7 +47,8 @@ trait AuthenticatesUsers
         if ($throttles && $this->hasTooManyLoginAttempts($request)) {
             return $this->sendLockoutResponse($request);
         }
-
+//        dump($this->handleUserWasAuthenticated($request, $throttles));
+//        dump($request->all());die;
         if (auth()->attempt($request->only($this->loginUsername(), 'password'), $request->has('remember'))) {
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -67,6 +72,7 @@ trait AuthenticatesUsers
      */
     public function logout()
     {
+
         /**
          * Remove the socialite session variable if exists
          */
@@ -100,7 +106,6 @@ trait AuthenticatesUsers
         if ($throttles) {
             $this->clearLoginAttempts($request);
         }
-
         /**
          * Check to see if the users account is confirmed and active
          */

@@ -5,10 +5,10 @@ namespace App\Models\Backend;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Member extends Authenticatable
 {
     //表名
-    protected $table = 'manages';
+    protected $table = 'members';
 
     //指定主键
     protected $primaryKey = 'id';
@@ -39,6 +39,6 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token'
+        'password', 'token'
     ];
 }

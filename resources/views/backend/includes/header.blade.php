@@ -62,7 +62,9 @@
                         <span class="label label-warning">0</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">{{app('translator')->transChoice('strings.backend.general.you_have.notifications', 0)}}{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}</li>
+                        <li class="header">
+                            {{--{{app('translator')->transChoice('strings.backend.general.you_have.notifications', 0)}}{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}--}}
+                        </li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
@@ -120,7 +122,7 @@
                         <!-- The user image in the navbar-->
                         <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="user-image" alt="User Image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
+                        <span class="hidden-xs">{{ Auth::guard()->user()->name }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
@@ -128,7 +130,7 @@
                         <li class="user-header">
                             <img src="{{asset('/img/64e1b8d34f425d19e1ee2ea7236d3028.png')}}" class="img-circle" alt="User Image" />
                             <p>
-                                {!! Auth::guard('admin')->user()->name !!} - {{ trans('roles.web_developer') }}
+                                {!! Auth::guard()->user()->name !!} - {{ trans('roles.web_developer') }}
                                 <small>{{ trans('strings.backend.general.member_since') }}</small>
                             </p>
                         </li>

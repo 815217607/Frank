@@ -51,22 +51,22 @@ class MenuComposer
     public function compose(View $view)
     {
 
-        $info=Auth::guard('admin')->user();
-        dump($info);die;
-        $user=Auth::user()->toArray();
+//        $info=Auth::user()->roles;
+//        dump($info);die;
+        $user=Auth::user();
         $psers=[];
         if($user){
             $permissions=[];
             $roles=[];
-        foreach($user['roles'] as $val){
-            if(isset($val['permissions']))
+        foreach($user->roles as $val){
+            if(isset($val->permissions))
             {
-                foreach($val['permissions'] as $val){
-                    $permissions[]=$val['id'];
+                foreach($val->permissions as $v){
+                    $permissions[]=$v->id;
                 }
             }
             if(isset($val['pivot'])){
-                $roles[]=$val['pivot']['role_id'];
+                $roles[]=$val->pivot->role_id;
             }
         }
             $psers= Permission::query()->where(function($query)use($permissions,$roles){

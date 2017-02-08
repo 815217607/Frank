@@ -27,6 +27,6 @@ class CreatePermissionAdmin extends Migration
      */
     public function down()
     {
-        Schema::drop('permission_user');
+        Schema::drop('permission_admin');
     }
 }

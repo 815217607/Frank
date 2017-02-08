@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AuthAdmin
+class AuthMember
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class AuthAdmin
     {
 
 
-        if (Auth::guard('admin')->guest()) {
+        if (Auth::guard('member')->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {

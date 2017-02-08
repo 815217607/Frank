@@ -61,15 +61,15 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'admin_guest' => \App\Http\Middleware\AdminRedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'app_user_auth' => \App\Http\Middleware\Api\AppAuthTokenMiddleware::class,
         /**
          * Access Middleware
          */
-        'admin_auth' => \App\Http\Middleware\AuthAdmin::class,
+        'member_auth' => \App\Http\Middleware\AuthMember::class,
         'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
-
     ];
 //    public function __construct(Application $app, Router $router){
 //

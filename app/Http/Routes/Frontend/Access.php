@@ -5,29 +5,19 @@
  */
 Route::group(['namespace' => 'Auth'], function () {
 
-    /**
-     * These routes require the user to be logged in
-     */
-    Route::group(['middleware' => 'auth'], function () {
-        Route::get('logout', 'AuthController@logout')->name('home.logout');
-
-        // Change Password Routes
-        Route::get('password/change', 'PasswordController@showChangePasswordForm')->name('home.password.change');
-        Route::post('password/change', 'PasswordController@changePassword')->name('home.password.update');
-    });
 
     /**
      * These routes require the user NOT be logged in
      */
     Route::group(['middleware' => 'guest'], function () {
         // Authentication Routes
-        Route::get('home/login', 'AuthController@showLoginForm')
-            ->name('home.login');
-        Route::post('home/login', 'AuthController@login');
+        Route::get('login', 'AuthController@showLoginForm')
+            ->name('manage.login');
+        Route::post('login', 'AuthController@login');
 
         // Socialite Routes
         Route::get('login/{provider}', 'AuthController@loginThirdParty')
-            ->name('web.provider');
+            ->name('manage.provider');
 
         // Registration Routes
 //        Route::get('register', 'AuthController@showRegistrationForm')
@@ -42,8 +32,14 @@ Route::group(['namespace' => 'Auth'], function () {
 
         // Password Reset Routes
         Route::get('password/reset/{token?}', 'PasswordController@showResetForm')
-            ->name('auth.password.reset');
+            ->name('manage.password.reset');
         Route::post('password/email', 'PasswordController@sendResetLinkEmail');
         Route::post('password/reset', 'PasswordController@reset');
     });
+
+//    Route::auth();
+//    Route::any('/', 'AuthController@login')->name('manage.login');
+//    Route::get('login', 'AuthController@login')->name('manage.login');
+    Route::any('logout', 'AuthController@logout')->name('manage.logout');
+//    Route::get('/home', 'HomeController@index');
 });

@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('backend.layouts.login_master')
 
 @section('content')
 
@@ -11,12 +11,12 @@
 
                 <div class="panel-body">
 
-                    {!! Form::open(['url' => 'manage/login', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['url' => 'admin/login', 'class' => 'form-horizontal']) !!}
 
                         <div class="form-group">
                             {!! Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                {!! Form::input('username', 'username', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.name')]) !!}
+                                {!! Form::input('name', 'name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.name')]) !!}
                             </div><!--col-md-6-->
                         </div><!--form-group-->
 

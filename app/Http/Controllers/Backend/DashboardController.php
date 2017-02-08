@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 
 
 /**
@@ -19,7 +19,9 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin_auth');
+
+//        dump(access());die;
+//        $this->middleware('admin');
     }
 
     /**

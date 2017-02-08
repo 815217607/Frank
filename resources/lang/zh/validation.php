@@ -165,6 +165,7 @@ return [
 
         'frontend' => [
             'email' => '常用邮箱',
+            'username' => '用户名',
             'name' => '用户名',
             'password' => '密码',
             'password_confirmation' => '确认密码',

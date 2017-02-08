@@ -65,7 +65,7 @@ Route::post('upload', function (\Illuminate\Http\Request $request) {
  * Namespaces indicate folder structure
  * Admin middleware groups web, auth, and routeNeedsPermission
  */
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' =>'admin'], function () {
+Route::group(['prefix' => 'admin','namespace' => 'Backend'], function () {
 
     /**
      * These routes need view-backend permission
@@ -75,7 +75,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' =>'adm
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
 //    require (__DIR__ . '/Routes/Backend/Dashboard.php');
-    Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+
 
 //    Route::any('/', 'AuthController@login')->name('manage.login');
 //    Route::any('login', 'AuthController@login')->name('manage.login');
@@ -93,15 +93,46 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' =>'adm
 //        Route::any('register', 'AuthController@register');
 //    });
 
-    require (__DIR__ . '/Routes/Backend/Access.php');
-    require (__DIR__ . '/Routes/Backend/LogViewer.php');
+    Route::group([
+        'middleware' =>['admin']
+        ],
+        function(){
+        Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+        require (__DIR__ . '/Routes/Backend/Access.php');
+        require (__DIR__ . '/Routes/Backend/LogViewer.php');
+
+    });
+
+    /**
+     * These routes require the user NOT be logged in
+     */
+    Route::group([
+        'namespace'  => 'auth',
+        'middleware' => ['web'],
+    ], function () {
+        // Authentication Routes
+        Route::get('login', 'AuthController@showLoginForm')
+            ->name('admin.login');
+        Route::post('login', 'AuthController@login');
+
+        // Socialite Routes
+        Route::get('login/{provider}', 'AuthController@loginThirdParty')
+            ->name('login.provider');
+        Route::get('logout', 'AuthController@logout');
+
+        // Confirm Account Routes
+        Route::get('account/confirm/{token}', 'AuthController@confirmAccount')
+            ->name('admin.account.confirm');
+        Route::get('account/confirm/resend/{token}', 'AuthController@resendConfirmationEmail')
+            ->name('admin.account.confirm.resend');
+
+        // Password Reset Routes
+        Route::get('password/reset/{token?}', 'PasswordController@showResetForm')
+            ->name('admin.password.reset');
+        Route::post('password/email', 'PasswordController@sendResetLinkEmail');
+        Route::post('password/reset', 'PasswordController@reset');
+    });
+
 });
 
-Route::group(['prefix' => 'manage','namespace' => 'Backend\Auth'], function () {
 
-//    Route::auth();
-    Route::any('/', 'AuthController@login')->name('manage.login');
-    Route::get('login', 'AuthController@login')->name('manage.login');
-    Route::any('logout', 'AuthController@logout')->name('manage.logout');
-//    Route::get('/home', 'HomeController@index');
-});

@@ -11,7 +11,7 @@
 
                 <div class="panel-body">
 
-                    {!! Form::open(['url' => 'home/login', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['url' => 'member/login', 'class' => 'form-horizontal']) !!}
 
                         <div class="form-group">
                             {!! Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) !!}

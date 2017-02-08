@@ -6,10 +6,10 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class Authenticate
+ * Class RedirectIfAuthenticated
  * @package App\Http\Middleware
  */
-class Authenticate
+class AdminRedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -21,16 +21,10 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-//        dump(Auth::guard($guard)->user());die;
-        if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
 
-                return redirect()->guest('admin/login');
-            }
+        if (Auth::guard($guard)->check()) {
+            return redirect('/');
         }
-
         return $next($request);
     }
 }
