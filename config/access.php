@@ -49,7 +49,7 @@ return [
      * This table is only for permissions that belong directly to a specific user and not a role
      */
 //    'permission_user_table' => 'permission_user',
-    'permission_user_table' => 'permission_admin',
+    'permission_user_table' => 'permission_user',
 
     /*
      * Table that specifies if one permission is dependent on another.
