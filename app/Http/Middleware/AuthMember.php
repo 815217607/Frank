@@ -16,9 +16,6 @@ class AuthMember
      */
     public function handle($request, Closure $next)
     {
-
-        $user= Auth::guard('member')->user();
-
         if (Auth::guard('member')->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);

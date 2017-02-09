@@ -22,17 +22,17 @@ class Member extends Authenticatable
     //指定不允许批量赋值的字段
     // protected $guarded = [];
 
-    //自动维护时间戳
-    public $timestamps = false;
-
-    //定制时间戳格式
-    protected $dateFormat = 'U';
-
-    //将默认增加时间转化为时间戳
-    protected function getDateFormat()
-    {
-        return time();
-    }
+//    //自动维护时间戳
+//    public $timestamps = false;
+//
+//    //定制时间戳格式
+//    protected $dateFormat = 'U';
+//
+//    //将默认增加时间转化为时间戳
+//    protected function getDateFormat()
+//    {
+//        return time();
+//    }
 
     /**
      * The attributes excluded from the model's JSON form.

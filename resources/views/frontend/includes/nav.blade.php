@@ -21,7 +21,6 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li>{!! link_to_route('frontend.index', trans('navs.frontend.home')) !!}</li>
-                <li>{!! link_to_route('frontend.macros', trans('navs.frontend.macros')) !!}</li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -50,19 +49,6 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>{!! link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) !!}</li>
-
-                            {{--@if (Auth::guard('member')->user()->canChangePassword())--}}
-                                {{--<li>{!! link_to_route('home.password.change', trans('navs.frontend.user.change_password')) !!}</li>--}}
-                            {{--@endif--}}
-
-                            @permission('view-backend')
-
-                                <li>{!! link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) !!}</li>
-
-                                {{--<li>{!! link_to_route('user.dashboard', trans('navs.frontend.user.administration')) !!}</li>--}}
-
-                            @endauth
-
                             <li>{!! link_to_route('member.logout', trans('navs.general.logout')) !!}</li>
                         </ul>
                     </li>

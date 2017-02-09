@@ -32,7 +32,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{ trans('labels.frontend.user.profile.email') }}</th>
-                                        <td>{!! $user->email !!}</td>
+                                        <td>{!! $user->username !!}</td>
                                     </tr>
                                     <tr>
                                         <th>{{ trans('labels.frontend.user.profile.created_at') }}</th>
@@ -47,9 +47,9 @@
                                         <td>
                                             <a href="{!! route('frontend.user.profile.edit') !!}" class="btn btn-primary btn-xs">{{ trans('labels.frontend.user.profile.edit_information') }}</a>
 
-                                            @if ($user->canChangePassword())
-                                                <a href="{!! route('home.password.change') !!}" class="btn btn-warning btn-xs">{{ trans('navs.frontend.user.change_password') }}</a>
-                                            @endif
+                                            {{--@if ($user->canChangePassword())--}}
+                                                {{--<a href="{!! route('member.password.change') !!}" class="btn btn-warning btn-xs">{{ trans('navs.frontend.user.change_password') }}</a>--}}
+                                            {{--@endif--}}
                                         </td>
                                     </tr>
                                 </table>

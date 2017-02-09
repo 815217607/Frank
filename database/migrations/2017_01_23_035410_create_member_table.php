@@ -16,6 +16,7 @@ class CreateMemberTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('username', 128);
+            $table->string('picture')->nullable();
             $table->string('password', 64);
             $table->tinyInteger('status')->unsigned()->default(1);
             $table->string('confirmation_code');
