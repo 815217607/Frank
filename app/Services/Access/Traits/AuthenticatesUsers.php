@@ -9,6 +9,8 @@ use App\Exceptions\GeneralException;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+
+
 //use App\Http\Requests\Frontend\Auth\LoginRequest;
 
 /**
@@ -24,7 +26,6 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-
         $loginView=property_exists($this, 'loginView') ? $this->loginView : 'frontend.auth.login';
         return view($loginView)
             ->withSocialiteLinks($this->getSocialLinks());
@@ -47,8 +48,7 @@ trait AuthenticatesUsers
         if ($throttles && $this->hasTooManyLoginAttempts($request)) {
             return $this->sendLockoutResponse($request);
         }
-//        dump($this->handleUserWasAuthenticated($request, $throttles));
-//        dump($request->all());die;
+
         if (auth()->attempt($request->only($this->loginUsername(), 'password'), $request->has('remember'))) {
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
@@ -79,9 +79,10 @@ trait AuthenticatesUsers
         if (app('session')->has(config('access.socialite_session_name'))) {
             app('session')->forget(config('access.socialite_session_name'));
         }
-
-        event(new UserLoggedOut(access()->user()));
-        auth()->logout();
+        if(access()->user()){
+            event(new UserLoggedOut(access()->user()));
+            auth()->logout();
+        }
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 
@@ -92,7 +93,7 @@ trait AuthenticatesUsers
      */
     public function loginUsername()
     {
-        return 'name';
+        return  'name';
     }
 
     /**

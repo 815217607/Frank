@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Auth;
 
 /**
  * Class FrontendController
@@ -10,11 +11,16 @@ use App\Http\Controllers\Controller;
  */
 class FrontendController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:member');
+    }
     /**
      * @return \Illuminate\View\View
      */
     public function index()
     {
+
         javascript()->put([
             'test' => 'it works!',
         ]);

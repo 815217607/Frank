@@ -74,24 +74,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Backend'], function () {
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
-//    require (__DIR__ . '/Routes/Backend/Dashboard.php');
-
-
-//    Route::any('/', 'AuthController@login')->name('manage.login');
-//    Route::any('login', 'AuthController@login')->name('manage.login');
-//    Route::any('logout', 'AuthController@logout')->name('manage.logout');
-    /**
-     * Menu Auth
-     */
-//    Route::group(['prefix' => 'auth','namespace' => 'Auth','middleware' => 'web'], function() {
-
-//        Route::get('login', 'AuthController@login')->name('auth.login');
-//        Route::get('/123', function(){
-//            echo '13';
-//        });
-//        Route::any('logout', 'AuthController@logout');
-//        Route::any('register', 'AuthController@register');
-//    });
 
     Route::group([
         'middleware' =>['admin']
@@ -100,38 +82,13 @@ Route::group(['prefix' => 'admin','namespace' => 'Backend'], function () {
         Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
         require (__DIR__ . '/Routes/Backend/Access.php');
         require (__DIR__ . '/Routes/Backend/LogViewer.php');
-
     });
 
     /**
      * These routes require the user NOT be logged in
      */
-    Route::group([
-        'namespace'  => 'auth',
-        'middleware' => ['web'],
-    ], function () {
-        // Authentication Routes
-        Route::get('login', 'AuthController@showLoginForm')
-            ->name('admin.login');
-        Route::post('login', 'AuthController@login');
+    require (__DIR__ . '/Routes/Backend/Auth.php');
 
-        // Socialite Routes
-        Route::get('login/{provider}', 'AuthController@loginThirdParty')
-            ->name('login.provider');
-        Route::get('logout', 'AuthController@logout');
-
-        // Confirm Account Routes
-        Route::get('account/confirm/{token}', 'AuthController@confirmAccount')
-            ->name('admin.account.confirm');
-        Route::get('account/confirm/resend/{token}', 'AuthController@resendConfirmationEmail')
-            ->name('admin.account.confirm.resend');
-
-        // Password Reset Routes
-        Route::get('password/reset/{token?}', 'PasswordController@showResetForm')
-            ->name('admin.password.reset');
-        Route::post('password/email', 'PasswordController@sendResetLinkEmail');
-        Route::post('password/reset', 'PasswordController@reset');
-    });
 
 });
 

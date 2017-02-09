@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
  * Class RedirectIfAuthenticated
  * @package App\Http\Middleware
  */
-class AdminRedirectIfAuthenticated
+class MemberRedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.

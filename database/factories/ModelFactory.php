@@ -19,3 +19,14 @@ $factory->define(App\Models\Access\User\User::class, function (Faker\Generator $
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Member::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->name,
+        'username' => $faker->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
+    ];
+});

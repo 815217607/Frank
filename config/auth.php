@@ -45,7 +45,7 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
-        'members' => [
+        'member' => [
             'driver' => 'session',
             'provider' => 'members',
         ],
@@ -69,11 +69,6 @@ return [
     */
 
     'providers' => [
-//        'users' => [
-//            'driver' => 'eloquent',
-//            'model' => App\Models\Access\User\User::class,
-//        ],
-
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\Access\User\User::class,
@@ -81,7 +76,7 @@ return [
 
         'members' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Backend\Member::class,
+            'model' => App\Models\Member::class,
         ],
         // 'users' => [
         //     'driver' => 'database',
@@ -114,13 +109,7 @@ return [
             'email' => 'frontend.auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
-        'members' => [
-            'provider' => 'members',
-            'username' => 'frontend.auth.username.password',
-            'table' => 'members_password_resets',
-            'expire' => 60,
-        ],
+        ]
     ],
 
 ];

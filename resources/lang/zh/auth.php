@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
+    'failed' => '无效用户名和密码.',
     'general_error' => '你没有访问权限.',
     'socialite' => [
         'unacceptable' => ':provider 登录的用户类型错误.',

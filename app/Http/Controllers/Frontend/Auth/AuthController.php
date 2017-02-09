@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+
+use App\Models\Member;
+use App\Services\Access\Traits\UseSocialite;
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Request;
-use App\Services\Access\Traits\ConfirmUsers;
-use App\Services\Access\Traits\UseSocialite;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App\Repositories\Frontend\User\UserContract;
-use App\Services\Access\Traits\AuthenticatesAndRegistersUsers;
+
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class AuthController
@@ -18,28 +20,65 @@ use App\Services\Access\Traits\AuthenticatesAndRegistersUsers;
 class AuthController extends Controller
 {
 
-    use AuthenticatesAndRegistersUsers, ConfirmUsers, ThrottlesLogins, UseSocialite;
-
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins,UseSocialite;
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+
+    protected $redirectTo = '/';
+    protected $guard = 'member';
+    protected $loginView = 'frontend.auth.login';
+    protected $registerView = 'member.register';
+    protected $username = 'username';
 
     /**
      * Where to redirect users after they logout
      *
      * @var string
      */
-    protected $redirectAfterLogout = '/';
+    protected $redirectAfterLogout = '/member/login';
 
     /**
      * @param UserContract $user
      */
-    public function __construct(UserContract $user)
+    public function __construct()
     {
-        $this->user = $user;
+        $this->middleware('guest:member', ['except' => 'logout']);
+    }
+
+    public function showLoginForm()
+    {
+        if (view()->exists($this->loginView)) {
+            return view($this->loginView)->withSocialiteLinks($this->getSocialLinks());
+        }
+
+        return view($this->loginView)->withSocialiteLinks($this->getSocialLinks());
+    }
+    public function showRegistrationForm()
+    {
+        return view($this->registerView);
+    }
+    protected function validator(array $data)
+    {
+
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'username' => 'required|email|max:255|unique:members',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+    }
+
+    protected function create(array $data)
+    {
+        return Member::create([
+            'name' => $data['name'],
+            'username' => $data['name'],
+            'password' => bcrypt($data['password']),
+        ]);
+
     }
 }
 

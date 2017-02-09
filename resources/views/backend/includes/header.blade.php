@@ -152,7 +152,7 @@
                                 <a href="#" class="btn btn-default btn-flat">{{ trans('navs.backend.button') }}</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{!! route('manage.logout') !!}" class="btn btn-default btn-flat">{{ trans('navs.general.logout') }}</a>
+                                <a href="{!! route('admin.logout') !!}" class="btn btn-default btn-flat">{{ trans('navs.general.logout') }}</a>
                             </div>
                         </li>
                     </ul>

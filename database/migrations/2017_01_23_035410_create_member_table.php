@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateManagesTable extends Migration
+class CreateMemberTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,17 @@ class CreateManagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('member', function (Blueprint $table) {
+        Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('username', 128);
             $table->string('password', 64);
+            $table->tinyInteger('status')->unsigned()->default(1);
+            $table->string('confirmation_code');
+            $table->tinyInteger('confirmed')->default(1);
             $table->rememberToken();
-            $table->integer('create_time');
-            $table->integer('update_time');
+            $table->timestampsTz();
+            $table->softDeletes();
         });
     }
 
@@ -30,6 +33,6 @@ class CreateManagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('member');
+        Schema::drop('members');
     }
 }
