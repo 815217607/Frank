@@ -30,7 +30,7 @@ class AuthController extends Controller
     protected $redirectTo = '/';
     protected $guard = 'member';
     protected $loginView = 'frontend.auth.login';
-    protected $registerView = 'member.register';
+    protected $registerView = 'frontend.auth.register';
     protected $username = 'username';
 
     /**
@@ -65,7 +65,7 @@ class AuthController extends Controller
 
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'username' => 'required|email|max:255|unique:members',
+            'username' => 'required|max:255|unique:members',
             'password' => 'required|confirmed|min:6',
         ]);
 
@@ -75,7 +75,7 @@ class AuthController extends Controller
     {
         return Member::create([
             'name' => $data['name'],
-            'username' => $data['name'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
 

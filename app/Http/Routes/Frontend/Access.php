@@ -17,6 +17,6 @@ Route::group(['prefix' => 'member','namespace' => 'Auth'], function () {
       Route::any('logout', 'AuthController@logout')->name('member.logout');
 
     // Registration Routes...
-    Route::get('register', 'AuthController@showRegistrationForm')->name('member.register');
-    Route::post('register', 'AuthController@register');
+      Route::get('register', 'AuthController@showRegistrationForm')->name('member.register');
+      Route::post('register', 'AuthController@register');
 });
