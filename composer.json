@@ -19,8 +19,6 @@
         "intervention/image": "2.3.5",
         "maatwebsite/excel": "v2.1.1",
         "leancloud/leancloud-sdk": "v0.2.3",
-        "eyuan/basement": "0.1.x-dev",
-        "eyuan/goods": "0.1.x-dev",
         "overtrue/wechat": "~3.1"
     },
     "require-dev": {
@@ -68,11 +66,5 @@
     "config": {
         "preferred-install": "dist",
         "secure-http": false
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://composer-packages.ieyuan.com"
-        }
-    ]
+    }
 }
