@@ -9,7 +9,7 @@
                 <div class="panel-heading">{{ trans('labels.frontend.passwords.reset_password_box_title') }}</div>
                 <div class="panel-body">
 
-                    {!! Form::open(['url' => 'password/reset', 'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['url' => 'member/password/reset', 'class' => 'form-horizontal']) !!}
 
                     <input type="hidden" name="token" value="{{ $token }}">
 
