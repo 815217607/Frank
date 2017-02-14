@@ -197,6 +197,11 @@ return [
         App\Providers\MacroServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
 
+        /*
+         * 第三方登录
+         */
+//        Laravel\Socialite\SocialiteServiceProvider::class,
+
 //一下为框架自带
 //        Creativeorange\Gravatar\GravatarServiceProvider::class,
     ],
@@ -255,7 +260,10 @@ return [
 
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
-
+        /*
+         * 第三方登录
+         */
+//        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 //一下为框架自带
 //        'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
     ],

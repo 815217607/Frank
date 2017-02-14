@@ -168,6 +168,7 @@ return [
             'register_box_title' => '注册',
             'register_button' => '注册',
             'remember_me' => '永久有效',
+            'github' => 'github',
         ],
 
         'passwords' => [

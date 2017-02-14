@@ -10,8 +10,7 @@ Route::group(['prefix' => 'member','namespace' => 'Auth'], function () {
      * These routes require the user NOT be logged in
      */
 
-//    Route::auth();
-//    Route::any('/', 'AuthController@login')->name('manage.login');
+
       Route::get('login', 'AuthController@showLoginForm')->name('member.login');
       Route::post('login', 'AuthController@login');
       Route::any('logout', 'AuthController@logout')->name('member.logout');
@@ -25,4 +24,10 @@ Route::group(['prefix' => 'member','namespace' => 'Auth'], function () {
         ->name('member.password.reset');
     Route::post('password/email', 'PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'PasswordController@reset');
+
+//    Route::get('auth/{driver}', 'AuthController@redirectToProvider')->name('manage.provider');
+    Route::get('login/{provider}', 'AuthController@loginThirdParty')
+        ->name('manage.provider');
+
+    Route::get('auth/{driver}/callback', 'AuthController@handleProviderCallback');
 });

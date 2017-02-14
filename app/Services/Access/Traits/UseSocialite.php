@@ -44,13 +44,13 @@ trait UseSocialite
          * User has been successfully created or already exists
          * Log the user in
          */
-        auth()->login($user, true);
+        auth()->guard('member')->login($user, true);
 
         /**
          * User authenticated, check to see if they are active.
          */
-        if (! access()->user()->isActive()) {
-            auth()->logout();
+        if (! access()->guard('member')->user()->isActive()) {
+            auth()->guard('member')->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
         }
 
@@ -131,27 +131,27 @@ trait UseSocialite
         $socialite_links  = '';
 
         if (strlen(getenv('BITBUCKET_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
         }
 
         if (strlen(getenv('FACEBOOK_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
         }
 
         if (strlen(getenv('GOOGLE_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
         }
 
         if (strlen(getenv('GITHUB_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
         }
 
         if (strlen(getenv('LINKEDIN_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Linked In']), 'linkedin');
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Linked In']), 'linkedin');
         }
 
         if (strlen(getenv('TWITTER_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
         }
 
         for ($i = 0; $i < count($socialite_enable); $i++) {

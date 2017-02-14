@@ -13,6 +13,8 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Socialite;
+
 /**
  * Class AuthController
  * @package App\Http\Controllers\Frontend\Auth
@@ -88,62 +90,71 @@ class AuthController extends Controller
 
     }
 
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function login(Request $request)
-    {
-        if($data=$request->all()){
-            if(isset($data['username'])){
-                $this->username='username';
-            }elseif(isset($data['mobile'])){
-                $this->username='mobile';
-            }elseif(isset($data['email'])){
-                $this->username='email';
-            }
-        }
-        $this->validateLogin($request);
-//        dump(23423);die;
-//dump($request);die;
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        $throttles = $this->isUsingThrottlesLoginsTrait();
+//    /**
+//     * Handle a login request to the application.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function login(Request $request)
+//    {
+//        if($data=$request->all()){
+//            if(isset($data['username'])){
+//                $this->username='username';
+//            }elseif(isset($data['mobile'])){
+//                $this->username='mobile';
+//            }elseif(isset($data['email'])){
+//                $this->username='email';
+//            }
+//        }
+//        $this->validateLogin($request);
+////        dump(23423);die;
+////dump($request);die;
+//        // If the class is using the ThrottlesLogins trait, we can automatically throttle
+//        // the login attempts for this application. We'll key this by the username and
+//        // the IP address of the client making these requests into this application.
+//        $throttles = $this->isUsingThrottlesLoginsTrait();
+//
+//        if ($throttles && $lockedOut = $this->hasTooManyLoginAttempts($request)) {
+//            $this->fireLockoutEvent($request);
+//
+//            return $this->sendLockoutResponse($request);
+//        }
+//
+//        $credentials = $this->getCredentials($request);
+//
+//        if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
+//            return $this->handleUserWasAuthenticated($request, $throttles);
+//        }
+//
+//        // If the login attempt was unsuccessful we will increment the number of attempts
+//        // to login and redirect the user back to the login form. Of course, when this
+//        // user surpasses their maximum number of attempts they will get locked out.
+//        if ($throttles && ! $lockedOut) {
+//            $this->incrementLoginAttempts($request);
+//        }
+//
+//        return $this->sendFailedLoginResponse($request);
+//    }
+//
+//
+//    /**
+//     * Get the login username to be used by the controller.
+//     *
+//     * @return string
+//     */
+//    public function loginUsername()
+//    {
+//        return property_exists($this, 'username') ? $this->username : 'email';
+//    }
 
-        if ($throttles && $lockedOut = $this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
 
-            return $this->sendLockoutResponse($request);
-        }
-
-        $credentials = $this->getCredentials($request);
-
-        if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
-            return $this->handleUserWasAuthenticated($request, $throttles);
-        }
-
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        if ($throttles && ! $lockedOut) {
-            $this->incrementLoginAttempts($request);
-        }
-
-        return $this->sendFailedLoginResponse($request);
+    public function redirectToProvider($driver){
+        return Socialite::driver($driver)->redirect();
     }
 
-
-    /**
-     * Get the login username to be used by the controller.
-     *
-     * @return string
-     */
-    public function loginUsername()
-    {
-        return property_exists($this, 'username') ? $this->username : 'email';
+    public function handleProviderCallback($driver){
+        $user = Socialite::driver($driver)->user();
     }
 }
 
