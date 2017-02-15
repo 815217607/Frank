@@ -44,13 +44,13 @@ trait UseSocialite
          * User has been successfully created or already exists
          * Log the user in
          */
-        auth()->guard('member')->login($user, true);
+        auth()->login($user, true);
 
         /**
          * User authenticated, check to see if they are active.
          */
-        if (! access()->guard('member')->user()->isActive()) {
-            auth()->guard('member')->logout();
+        if (! access()->user()->isActive()) {
+            auth()->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
         }
 
@@ -143,7 +143,7 @@ trait UseSocialite
         }
 
         if (strlen(getenv('GITHUB_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
+            $socialite_enable[] = link_to_route('admin.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
         }
 
         if (strlen(getenv('LINKEDIN_CLIENT_ID'))) {
@@ -152,6 +152,10 @@ trait UseSocialite
 
         if (strlen(getenv('TWITTER_CLIENT_ID'))) {
             $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
+        }
+
+        if (strlen(getenv('WEIXIN_KEY'))) {
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin']), 'weixin');
         }
 
         for ($i = 0; $i < count($socialite_enable); $i++) {
@@ -174,6 +178,7 @@ trait UseSocialite
             'github',
             'linkedin',
             'twitter',
+            'weixin',
         ];
     }
 }

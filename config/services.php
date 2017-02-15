@@ -102,4 +102,12 @@ return [
         'scopes' => [],
         'with' => [],
     ],
+    'wechat' => [
+//        'client_id' =>  env('WECHAT_APP_ID'),
+//        'client_secret' =>  env('WECHAT_APP_SECRET'),
+//        'redirect' =>  env('WECHAT_REDIRECT'),
+        'client_id' => env('WEIXIN_KEY'),
+        'client_secret' => env('WEIXIN_SECRET'),
+        'redirect' => env('WEIXIN_REDIRECT_URI'),
+    ]
 ];

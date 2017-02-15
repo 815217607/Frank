@@ -190,7 +190,6 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         App\Providers\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
          */
@@ -198,9 +197,9 @@ return [
         App\Providers\ComposerServiceProvider::class,
 
         /*
-         * 第三方登录
-         */
-//        Laravel\Socialite\SocialiteServiceProvider::class,
+         * 第三方微信登录
+         * */
+        \SocialiteProviders\Manager\ServiceProvider::class, // add
 
 //一下为框架自带
 //        Creativeorange\Gravatar\GravatarServiceProvider::class,
@@ -259,11 +258,11 @@ return [
         'Form'        => Collective\Html\FormFacade::class,
 
         'Html'        => Collective\Html\HtmlFacade::class,
-        'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
         /*
          * 第三方登录
          */
-//        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
 //一下为框架自带
 //        'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
     ],

@@ -50,6 +50,7 @@ trait AuthenticatesUsers
         }
 
         if (auth()->attempt($request->only($this->loginUsername(), 'password'), $request->has('remember'))) {
+
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
 

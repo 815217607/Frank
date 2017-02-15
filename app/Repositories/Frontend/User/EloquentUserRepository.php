@@ -3,6 +3,7 @@
 namespace App\Repositories\Frontend\User;
 
 use App\Models\Access\User\User;
+use App\Models\Member;
 use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
@@ -35,7 +36,7 @@ class EloquentUserRepository implements UserContract
      */
     public function find($id)
     {
-        return User::findOrFail($id);
+        return Member::findOrFail($id);
     }
 
     /**
@@ -43,9 +44,9 @@ class EloquentUserRepository implements UserContract
      * @return bool
      */
     public function findByEmail($email) {
-        $user = User::where('email', $email)->first();
+        $user = Member::where('email', $email)->first();
 
-        if ($user instanceof User)
+        if ($user instanceof Member)
             return $user;
 
         return false;
@@ -57,9 +58,9 @@ class EloquentUserRepository implements UserContract
      * @throws GeneralException
      */
     public function findByToken($token) {
-        $user = User::where('confirmation_code', $token)->first();
+        $user = Member::where('confirmation_code', $token)->first();
 
-        if (! $user instanceof User)
+        if (! $user instanceof Member)
             throw new GeneralException(trans('exceptions.frontend.auth.confirmation.not_found'));
 
         return $user;
@@ -73,7 +74,7 @@ class EloquentUserRepository implements UserContract
     public function create(array $data, $provider = false)
     {
         if ($provider) {
-            $user = User::create([
+            $user = Member::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => null,
@@ -82,7 +83,7 @@ class EloquentUserRepository implements UserContract
                 'status' => 1,
             ]);
         } else {
-            $user = User::create([
+            $user = Member::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
@@ -95,7 +96,7 @@ class EloquentUserRepository implements UserContract
         /**
          * Add the default site role to the new user
          */
-        $user->attachRole($this->role->getDefaultUserRole());
+//        $user->attachRole($this->role->getDefaultMemberRole());
 
         /**
          * If users have to confirm their email and this is not a social account,
@@ -116,7 +117,7 @@ class EloquentUserRepository implements UserContract
     /**
      * @param $data
      * @param $provider
-     * @return EloquentUserRepository
+     * @return EloquentMemberRepository
      */
     public function findOrCreateSocial($data, $provider)
     {
@@ -184,7 +185,7 @@ class EloquentUserRepository implements UserContract
     public function sendConfirmationEmail($user)
     {
         //$user can be user instance or id
-        if (! $user instanceof User) {
+        if (! $user instanceof Member) {
             $user = $this->find($user);
         }
 

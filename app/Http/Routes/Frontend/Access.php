@@ -26,8 +26,8 @@ Route::group(['prefix' => 'member','namespace' => 'Auth'], function () {
     Route::post('password/reset', 'PasswordController@reset');
 
 //    Route::get('auth/{driver}', 'AuthController@redirectToProvider')->name('manage.provider');
-    Route::get('login/{provider}', 'AuthController@loginThirdParty')
+    Route::get('login/{provider}', 'AuthController@redirectToProvider')
         ->name('manage.provider');
 
-    Route::get('auth/{driver}/callback', 'AuthController@handleProviderCallback');
+    Route::get('login/{driver}/callback', 'AuthController@handleProviderCallback');
 });
