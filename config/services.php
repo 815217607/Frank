@@ -103,11 +103,18 @@ return [
         'with' => [],
     ],
     'weixin' => [
-//        'client_id' =>  env('WECHAT_APP_ID'),
-//        'client_secret' =>  env('WECHAT_APP_SECRET'),
-//        'redirect' =>  env('WECHAT_REDIRECT'),
         'client_id' => env('WEIXIN_KEY'),
         'client_secret' => env('WEIXIN_SECRET'),
         'redirect' => env('WEIXIN_REDIRECT_URI'),
+    ],
+    'qq' => [
+        'client_id' => env('QQ_KEY'),
+        'client_secret' => env('QQ_SECRET'),
+        'redirect' => env('QQ_REDIRECT_URI'),
+    ],
+    'weibo' => [
+        'client_id' => env('WEIBO_KEY'),
+        'client_secret' => env('WEIBO_KEY'),
+        'redirect' => env('WEIBO_KEY'),
     ]
 ];

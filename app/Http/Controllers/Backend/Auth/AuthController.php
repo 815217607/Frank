@@ -18,7 +18,7 @@ use App\Services\Access\Traits\AuthenticatesAndRegistersUsers;
 class AuthController extends Controller
 {
 
-    use AuthenticatesAndRegistersUsers, ConfirmUsers, ThrottlesLogins, UseSocialite;
+    use AuthenticatesAndRegistersUsers, ConfirmUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -44,6 +44,15 @@ class AuthController extends Controller
 
         $this->user = $user;
     }
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        $loginView=property_exists($this, 'loginView') ? $this->loginView : 'frontend.auth.login';
+        return view($loginView);
+    }
+
 }
 
 

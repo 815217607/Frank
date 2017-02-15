@@ -95,13 +95,13 @@ class AuthController extends Controller
 
     public function redirectToProvider($provider)
     {
-        return Socialite::with($provider)->stateless(false)->redirect();
+        return Socialite::with($provider)->redirect();
     }
 
     public function handleProviderCallback($provider)
     {
         $user = Socialite::with($provider)->user();
-dump($user);die;
+
         // $user->token;
     }
 

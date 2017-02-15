@@ -22,7 +22,8 @@
         "overtrue/wechat": "~3.1",
         "socialiteproviders/manager": "1.2.4",
         "socialiteproviders/weixin": "v1.0.0",
-        "socialiteproviders/qq":"*"
+        "socialiteproviders/qq":"v1.1.1",
+        "socialiteproviders/weibo":"v1.0.0"
 
     },
     "require-dev": {

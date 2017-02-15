@@ -158,6 +158,14 @@ trait UseSocialite
             $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin']), 'weixin');
         }
 
+        if (strlen(getenv('QQ_KEY'))) {
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'QQ']), 'qq');
+        }
+
+        if (strlen(getenv('WEIBO_KEY'))) {
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => '微博']), 'weibo');
+        }
+
         for ($i = 0; $i < count($socialite_enable); $i++) {
             $socialite_links .= ($socialite_links != '' ? '&nbsp;|&nbsp;' : '') . $socialite_enable[$i];
         }
@@ -179,6 +187,8 @@ trait UseSocialite
             'linkedin',
             'twitter',
             'weixin',
+            'qq',
+            'weibo',
         ];
     }
 }
