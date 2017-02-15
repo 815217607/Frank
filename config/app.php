@@ -199,7 +199,7 @@ return [
         /*
          * 第三方微信登录
          * */
-//        \SocialiteProviders\Manager\ServiceProvider::class, // add
+        \SocialiteProviders\Manager\ServiceProvider::class, // add
 
 //一下为框架自带
 //        Creativeorange\Gravatar\GravatarServiceProvider::class,
