@@ -13,7 +13,7 @@ class FrontendController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:member');
+        $this->middleware('member_auth:member');
     }
     /**
      * @return \Illuminate\View\View

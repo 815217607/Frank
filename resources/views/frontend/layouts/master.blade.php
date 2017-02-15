@@ -7,7 +7,7 @@
         <meta name="_token" content="{{ csrf_token() }}" />
 
         <title>@yield('title', app_name())</title>
-
+        <meta property="wb:webmaster" content="a200546e0be19fb2" />
         <!-- Meta -->
         <meta name="description" content="@yield('meta_description', 'Default Description')">
         <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">

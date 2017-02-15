@@ -22,7 +22,7 @@ trait UseSocialite
      */
     public function loginThirdParty(Request $request, $provider)
     {
-        //If the provider is not an acceptable third party than kick back
+               //If the provider is not an acceptable third party than kick back
         if (! in_array($provider, $this->getAcceptedProviders()))
             return redirect()->route('frontend.index')->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
 

@@ -33,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
             // add your listeners (aka providers) here
             'SocialiteProviders\Weixin\WeixinExtendSocialite@handle',
             'SocialiteProviders\Qq\QqExtendSocialite@handle',
+            'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
         ],
     ];
 
