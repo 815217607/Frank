@@ -9,5 +9,7 @@ Route::group([
         ->name('admin.login');
     Route::post('login', 'AuthController@login');
 
+    Route::get('logout', 'AuthController@logout') ->name('admin.logout');
+
 
 });
