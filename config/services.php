@@ -102,7 +102,7 @@ return [
         'scopes' => [],
         'with' => [],
     ],
-    'wechat' => [
+    'weixin' => [
 //        'client_id' =>  env('WECHAT_APP_ID'),
 //        'client_secret' =>  env('WECHAT_APP_SECRET'),
 //        'redirect' =>  env('WECHAT_REDIRECT'),

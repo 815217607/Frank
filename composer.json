@@ -21,7 +21,8 @@
         "leancloud/leancloud-sdk": "v0.2.3",
         "overtrue/wechat": "~3.1",
         "socialiteproviders/manager": "1.2.4",
-        "socialiteproviders/weixin": "v1.0.0"
+        "socialiteproviders/weixin": "v1.0.0",
+        "socialiteproviders/qq":"*"
 
     },
     "require-dev": {
@@ -30,8 +31,7 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "barryvdh/laravel-debugbar": "^2.1",
-        "socialiteproviders/manager": "~1.2"
+        "barryvdh/laravel-debugbar": "^2.1"
     },
     "autoload": {
         "classmap": [
