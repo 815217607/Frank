@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d780e0cd52d35127a749973a7722cfad",
+    "content-hash": "ecb26a748a371111144b92819380c380",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -184,16 +184,16 @@
         },
         {
             "name": "creativeorange/gravatar",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/creativeorange/gravatar.git",
-                "reference": "06cfcd2754fe0678298da1d244ab17231368d291"
+                "reference": "a0e84f0c8e8922ad151168d6ebd8db6a1b2d8cd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/06cfcd2754fe0678298da1d244ab17231368d291",
-                "reference": "06cfcd2754fe0678298da1d244ab17231368d291",
+                "url": "https://api.github.com/repos/creativeorange/gravatar/zipball/a0e84f0c8e8922ad151168d6ebd8db6a1b2d8cd2",
+                "reference": "a0e84f0c8e8922ad151168d6ebd8db6a1b2d8cd2",
                 "shasum": ""
             },
             "require": {
@@ -224,7 +224,7 @@
                 "gravatar",
                 "laravel"
             ],
-            "time": "2016-07-27T16:49:05+00:00"
+            "time": "2017-02-15T22:07:40+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -1972,16 +1972,16 @@
         },
         {
             "name": "overtrue/socialite",
-            "version": "1.0.21",
+            "version": "1.0.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/socialite.git",
-                "reference": "28d852f188719c57bd8c3282338eb69cc7d6971e"
+                "reference": "e749ea09ab7b356a94c823804e95650efc616337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/socialite/zipball/28d852f188719c57bd8c3282338eb69cc7d6971e",
-                "reference": "28d852f188719c57bd8c3282338eb69cc7d6971e",
+                "url": "https://api.github.com/repos/overtrue/socialite/zipball/e749ea09ab7b356a94c823804e95650efc616337",
+                "reference": "e749ea09ab7b356a94c823804e95650efc616337",
                 "shasum": ""
             },
             "require": {
@@ -2018,7 +2018,7 @@
                 "wechat",
                 "weibo"
             ],
-            "time": "2017-01-19T04:17:07+00:00"
+            "time": "2017-02-13T09:01:56+00:00"
         },
         {
             "name": "overtrue/wechat",
@@ -2551,6 +2551,43 @@
             ],
             "description": "Weixin OAuth2 Provider for Laravel Socialite",
             "time": "2015-07-13T13:51:52+00:00"
+        },
+        {
+            "name": "socialiteproviders/weixin-web",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Weixin-Web.git",
+                "reference": "33ef175d51670428fba99f441f733e4087f4d88c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Weixin-Web/zipball/33ef175d51670428fba99f441f733e4087f4d88c",
+                "reference": "33ef175d51670428fba99f441f733e4087f4d88c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "socialiteproviders/manager": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\WeixinWeb\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xyxu",
+                    "email": "techxu@gmail.com"
+                }
+            ],
+            "description": "Weixin-Web OAuth2 Provider for Laravel Socialite",
+            "time": "2015-07-13T14:06:01+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5088,7 +5125,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~5.6.0"
+        "php": ">=5.5.9"
     },
     "platform-dev": []
 }

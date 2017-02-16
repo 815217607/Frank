@@ -158,6 +158,9 @@ trait UseSocialite
             $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin']), 'weixin');
         }
 
+        if (strlen(getenv('WEIXINWEB_KEY'))) {
+            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin_web']), 'weixinweb');
+        }
         if (strlen(getenv('QQ_KEY'))) {
             $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'QQ']), 'qq');
         }
@@ -189,6 +192,7 @@ trait UseSocialite
             'weixin',
             'qq',
             'weibo',
+            'weixinweb',
         ];
     }
 }

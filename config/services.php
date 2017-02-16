@@ -116,5 +116,10 @@ return [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_KEY'),
         'redirect' => env('WEIBO_KEY'),
-    ]
+    ],
+    'weixinweb' => [
+    'client_id' => env('WEIXINWEB_KEY'),
+    'client_secret' => env('WEIXINWEB_SECRET'),
+    'redirect' => env('WEIXINWEB_REDIRECT_URI'),
+],
 ];

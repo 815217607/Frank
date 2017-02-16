@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 
+use App\Events\Frontend\Auth\UserLoggedIn;
+use App\Exceptions\GeneralException;
+use App\Models\Access\User\SocialLogin;
 use App\Models\Member;
 
 use App\Services\Access\Traits\UseSocialite;
@@ -95,6 +98,47 @@ class AuthController extends Controller
 
     public function redirectToProvider(Request $request,$provider)
     {
+        if (! in_array($provider, $this->getAcceptedProviders()))
+            return redirect()->route('frontend.index')->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
+
+        /**
+         * The first time this is hit, request is empty
+         * It's redirected to the provider and then back here, where request is populated
+         * So it then continues creating the user
+         */
+        if (! $request->all()) {
+            return $this->getAuthorizationFirst($provider);
+        }
+
+//        /**
+//         * Create the user if this is a new social account or find the one that is already there
+//         */
+//        $user = $this->findOrCreateSocial($this->getSocialUser($provider), $provider);
+//
+//        /**
+//         * User has been successfully created or already exists
+//         * Log the user in
+//         */
+//        auth()->login($user, true);
+//
+//        /**
+//         * User authenticated, check to see if they are active.
+//         */
+//        if (! access()->user()->isActive()) {
+//            auth()->logout();
+//            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
+//        }
+//
+//        /**
+//         * Throw an event in case you want to do anything when the user logs in
+//         */
+//        event(new UserLoggedIn($user));
+//
+//        /**
+//         * Set session variable so we know which provider user is logged in as, if ever needed
+//         */
+//        session([config('access.socialite_session_name') => $provider]);
+//        return redirect()->intended($this->redirectPath());
         return Socialite::with($provider)->redirect();
     }
 
@@ -105,6 +149,121 @@ class AuthController extends Controller
         // $user->token;
     }
 
+    /**
+     * @param $provider
+     * @return mixed
+     */
+    public function getSocialUser($provider)
+    {
+        return Socialite::driver($provider)->user();
+    }
+
+
+    /**
+     * @param $email
+     * @return bool
+     */
+    private function findByEmail($email) {
+        $user = Member::where('email', $email)->first();
+
+        if ($user instanceof Member)
+            return $user;
+
+        return false;
+    }
+
+
+    /**
+     * @param $data
+     * @param $provider
+     * @return EloquentMemberRepository
+     */
+    private function findOrCreateSocial($data, $provider)
+    {
+        /**
+         * Check to see if there is a user with this email first
+         */
+        $user = $this->findByEmail($data->email);
+
+        /**
+         * If the user does not exist create them
+         * The true flag indicate that it is a social account
+         * Which triggers the script to use some default values in the create method
+         */
+        if (! $user) {
+            $user = $this->create([
+                'name'  => $data->name,
+                'email' => $data->email,
+            ], true);
+        }
+
+        /**
+         * See if the user has logged in with this social account before
+         */
+        if (! $user->hasProvider($provider)) {
+            /**
+             * Gather the provider data for saving and associate it with the user
+             */
+            $user->providers()->save(new SocialLogin([
+                'provider'    => $provider,
+                'provider_id' => $data->id,
+            ]));
+        }
+
+        /**
+         * Return the user object
+         */
+        return $user;
+    }
+
+
+    /**
+     * @param array $data
+     * @param bool $provider
+     * @return static
+     */
+    public function create(array $data, $provider = false)
+    {
+        if ($provider) {
+            $user = Member::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => null,
+                'confirmation_code' => md5(uniqid(mt_rand(), true)),
+                'confirmed' => 1,
+                'status' => 1,
+            ]);
+        } else {
+            $user = Member::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'confirmation_code' => md5(uniqid(mt_rand(), true)),
+                'confirmed' => config('access.users.confirm_email') ? 0 : 1,
+                'status' => 1,
+            ]);
+        }
+
+        /**
+         * Add the default site role to the new user
+         */
+//        $user->attachRole($this->role->getDefaultMemberRole());
+
+        /**
+         * If users have to confirm their email and this is not a social account,
+         * send the confirmation email
+         *
+         * If this is a social account they are confirmed through the social provider by default
+         */
+        if (config('access.users.confirm_email') && $provider === false) {
+            $this->sendConfirmationEmail($user);
+        }
+
+        /**
+         * Return the user object
+         */
+        return $user;
+    }
 }
 
 
