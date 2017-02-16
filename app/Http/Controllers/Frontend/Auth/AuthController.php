@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -138,14 +139,16 @@ class AuthController extends Controller
 //         * Set session variable so we know which provider user is logged in as, if ever needed
 //         */
 //        session([config('access.socialite_session_name') => $provider]);
+        Log::info($provider);
 //        return redirect()->intended($this->redirectPath());
         return Socialite::with($provider)->redirect();
     }
 
     public function handleProviderCallback($provider)
     {
+        Log::info($provider);
         $user = Socialite::with($provider)->user();
-
+        return'';
         // $user->token;
     }
 
