@@ -3,7 +3,7 @@
 /**
  * Frontend Access Controllers
  */
-Route::group(['prefix' => 'member','namespace' => 'auth'], function () {
+Route::group(['prefix' => 'member','namespace' => 'Auth'], function () {
 
 
     /**
