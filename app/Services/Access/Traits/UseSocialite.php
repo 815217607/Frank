@@ -4,6 +4,7 @@ namespace App\Services\Access\Traits;
 
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 
