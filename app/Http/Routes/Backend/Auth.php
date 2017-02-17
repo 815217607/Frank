@@ -1,7 +1,7 @@
 <?php
 
 Route::group([
-    'namespace'  => 'auth',
+    'namespace'  => 'Auth',
     'middleware' => ['web'],
 ], function () {
     // Authentication Routes
