@@ -108,10 +108,12 @@ trait UseSocialite
         /**
          * Neither scopes or with are set
          */
-        Log::info($provider); Log::info("===========");
-        Socialite::driver($provider)
-            ->redirect();
-        Log::info($provider); Log::info("-----------");
+        Log::info($provider);
+        Log::info("===========");
+        Log::info(Socialite::driver($provider)
+            ->redirect());
+
+        Log::info("-----------");
         return Socialite::driver($provider)
             ->redirect();
     }
