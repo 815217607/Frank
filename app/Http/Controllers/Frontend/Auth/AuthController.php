@@ -147,19 +147,20 @@ class AuthController extends Controller
     public function handleProviderCallback($provider)
     {
         Log::info($provider);
-        $user = Socialite::with($provider)->user();
-        return'';
+//        $user = Socialite::with($provider)->user();
+        return '';
         // $user->token;
     }
 
-    /**
-     * @param $provider
-     * @return mixed
-     */
-    public function getSocialUser($provider)
-    {
-        return Socialite::driver($provider)->user();
-    }
+//    /**
+//     * @param $provider
+//     * @return mixed
+//     */
+//    public function getSocialUser($provider)
+//    {
+//        dump(324234);die;
+////        return Socialite::driver($provider)->user();
+//    }
 
 
     /**
