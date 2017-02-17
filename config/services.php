@@ -113,11 +113,15 @@ return [
         'client_id' => env('QQ_KEY'),
         'client_secret' => env('QQ_SECRET'),
         'redirect' => env('QQ_REDIRECT_URI'),
+        'scopes' => [],
+        'with' => [],
     ],
     'weibo' => [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_KEY'),
         'redirect' => env('WEIBO_KEY'),
+        'scopes' => [],
+        'with' => [],
     ],
     'weixinweb' => [
         'client_id' => env('WEIXINWEB_KEY'),
