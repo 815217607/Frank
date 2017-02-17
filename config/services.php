@@ -106,6 +106,8 @@ return [
         'client_id' => env('WEIXIN_KEY'),
         'client_secret' => env('WEIXIN_SECRET'),
         'redirect' => env('WEIXIN_REDIRECT_URI'),
+        'scopes' => [],
+        'with' => [],
     ],
     'qq' => [
         'client_id' => env('QQ_KEY'),
@@ -118,8 +120,10 @@ return [
         'redirect' => env('WEIBO_KEY'),
     ],
     'weixinweb' => [
-    'client_id' => env('WEIXINWEB_KEY'),
-    'client_secret' => env('WEIXINWEB_SECRET'),
-    'redirect' => env('WEIXINWEB_REDIRECT_URI'),
-],
+        'client_id' => env('WEIXINWEB_KEY'),
+        'client_secret' => env('WEIXINWEB_SECRET'),
+        'redirect' => env('WEIXINWEB_REDIRECT_URI'),
+        'scopes' => ['snsapi_userinfo'],
+        'with' => [],
+    ],
 ];

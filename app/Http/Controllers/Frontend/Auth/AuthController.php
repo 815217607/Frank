@@ -139,9 +139,9 @@ class AuthController extends Controller
 //         * Set session variable so we know which provider user is logged in as, if ever needed
 //         */
 //        session([config('access.socialite_session_name') => $provider]);
-        Log::info($provider);
-        return redirect()->intended($this->redirectPath());
-//        return Socialite::with($provider)->redirect();
+
+//        return redirect()->intended($this->redirectPath());
+        return Socialite::with($provider)->redirect();
     }
 
     public function handleProviderCallback($provider)
