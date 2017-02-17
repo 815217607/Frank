@@ -107,7 +107,10 @@ trait UseSocialite
         /**
          * Neither scopes or with are set
          */
-        dump( Socialite::driver($provider));die;
+        Log::info($provider); Log::info("===========");
+        dump( Socialite::driver($provider));
+        Log::info($provider); Log::info("-----------");
+        die;
         return Socialite::driver($provider)
             ->redirect();
     }
