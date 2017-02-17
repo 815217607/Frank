@@ -99,17 +99,17 @@ class AuthController extends Controller
 
     public function redirectToProvider(Request $request,$provider)
     {
-//        if (! in_array($provider, $this->getAcceptedProviders()))
-//            return redirect()->route('frontend.index')->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
+        if (! in_array($provider, $this->getAcceptedProviders()))
+            return redirect()->route('frontend.index')->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
 
         /**
          * The first time this is hit, request is empty
          * It's redirected to the provider and then back here, where request is populated
          * So it then continues creating the user
          */
-//        if (! $request->all()) {
-//            return $this->getAuthorizationFirst($provider);
-//        }
+        if (! $request->all()) { Log::info(11111);
+            return $this->getAuthorizationFirst($provider);
+        }
 
 //        /**
 //         * Create the user if this is a new social account or find the one that is already there
