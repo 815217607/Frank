@@ -27,7 +27,7 @@ Route::group(['prefix' => 'member','namespace' => 'Auth'], function () {
 
 //    Route::get('auth/{driver}', 'AuthController@redirectToProvider')->name('manage.provider');
     Route::get('login/{provider}', 'AuthController@redirectToProvider')
-        ->name('manage.provider');
+        ->name('member.provider');
 
     Route::get('login/{driver}/callback', 'AuthController@handleProviderCallback');
 });

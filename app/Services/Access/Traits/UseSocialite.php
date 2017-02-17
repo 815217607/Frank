@@ -131,42 +131,42 @@ trait UseSocialite
         $socialite_links  = '';
 
         if (strlen(getenv('BITBUCKET_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
         }
 
         if (strlen(getenv('FACEBOOK_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
         }
 
         if (strlen(getenv('GOOGLE_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
         }
 
         if (strlen(getenv('GITHUB_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('admin.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
         }
 
         if (strlen(getenv('LINKEDIN_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Linked In']), 'linkedin');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Linked In']), 'linkedin');
         }
 
         if (strlen(getenv('TWITTER_CLIENT_ID'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
         }
 
         if (strlen(getenv('WEIXIN_KEY'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin']), 'weixin');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin']), 'weixin');
         }
 
         if (strlen(getenv('WEIXINWEB_KEY'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin_web']), 'weixinweb');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'weixin_web']), 'weixinweb');
         }
         if (strlen(getenv('QQ_KEY'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'QQ']), 'qq');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => 'QQ']), 'qq');
         }
 
         if (strlen(getenv('WEIBO_KEY'))) {
-            $socialite_enable[] = link_to_route('manage.provider', trans('labels.frontend.auth.login_with', ['social_media' => '微博']), 'weibo');
+            $socialite_enable[] = link_to_route('member.provider', trans('labels.frontend.auth.login_with', ['social_media' => '微博']), 'weibo');
         }
 
         for ($i = 0; $i < count($socialite_enable); $i++) {
