@@ -20,11 +20,11 @@
         "maatwebsite/excel": "v2.1.1",
         "leancloud/leancloud-sdk": "v0.2.3",
         "overtrue/wechat": "~3.1",
-        "socialiteproviders/manager": "1.2.4",
-        "socialiteproviders/weixin": "v1.0.0",
-        "socialiteproviders/qq":"v1.1.1",
-        "socialiteproviders/weibo":"v1.0.0",
-        "socialiteproviders/weixin-web":"v1.0.0"
+        "socialiteproviders/manager": "*",
+        "socialiteproviders/weixin": "*",
+        "socialiteproviders/qq":"*",
+        "socialiteproviders/weibo":"*",
+        "socialiteproviders/weixin-web":"*"
 
     },
     "require-dev": {

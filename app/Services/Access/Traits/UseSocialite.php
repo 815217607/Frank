@@ -91,6 +91,7 @@ trait UseSocialite
          * Just scopes are set
          */
         if (count(config("services.{$provider}.scopes")) && ! count(config("services.{$provider}.with"))) {
+
             return Socialite::driver($provider)
                 ->scopes(config("services.{$provider}.scopes"))
                 ->redirect();
@@ -100,6 +101,7 @@ trait UseSocialite
          * Just with is set
          */
         if (! count(config("services.{$provider}.scopes")) && count(config("services.{$provider}.with"))) {
+
             return Socialite::driver($provider)
                 ->with(config("services.{$provider}.with"))
                 ->redirect();
@@ -108,12 +110,8 @@ trait UseSocialite
         /**
          * Neither scopes or with are set
          */
-        Log::info($provider);
-        Log::info("===========");
-        Log::info(Socialite::driver($provider)
-            ->redirect());
 
-        Log::info("-----------");
+
         return Socialite::driver($provider)
             ->redirect();
     }
@@ -124,6 +122,7 @@ trait UseSocialite
      */
     public function getSocialUser($provider)
     {
+
         return Socialite::driver($provider)->user();
     }
 

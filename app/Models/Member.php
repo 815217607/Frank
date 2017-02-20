@@ -42,4 +42,21 @@ class Member extends Authenticatable
     protected $hidden = [
         'password', 'token'
     ];
+
+
+    /**
+     * @param $provider
+     * @return bool
+     */
+    public function hasProvider($provider)
+    {
+        foreach ($this->providers as $p) {
+            if ($p->provider == $provider) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
 }

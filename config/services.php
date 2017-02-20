@@ -106,6 +106,7 @@ return [
         'client_id' => env('WEIXIN_KEY'),
         'client_secret' => env('WEIXIN_SECRET'),
         'redirect' => env('WEIXIN_REDIRECT_URI'),
+        'auth_base_uri' => env('WEIXIN_REDIRECT_URI'),
         'scopes' => [],
         'with' => [],
     ],
@@ -127,7 +128,7 @@ return [
         'client_id' => env('WEIXINWEB_KEY'),
         'client_secret' => env('WEIXINWEB_SECRET'),
         'redirect' => env('WEIXINWEB_REDIRECT_URI'),
-        'scopes' => ['snsapi_userinfo'],
+        'scopes' => [],
         'with' => [],
     ],
 ];

@@ -107,49 +107,56 @@ class AuthController extends Controller
          * It's redirected to the provider and then back here, where request is populated
          * So it then continues creating the user
          */
-        if (! $request->all()) { Log::info(11111);
-            return $this->getAuthorizationFirst($provider);
-        }
 
-//        /**
-//         * Create the user if this is a new social account or find the one that is already there
-//         */
+
+            return $this->getAuthorizationFirst($provider);
+
+
+
+    }
+
+    public function handleProviderCallback(Request $request,$provider)
+    {
+        $info=$this->getSocialUser($provider);
+
+        $user = $this->findOrCreateSocial($info, $provider);
+        auth()->guard('member')->login($user, true);
+//        return redirect()->intended($this->redirectPath());
+
+
+        /**
+         * Create the user if this is a new social account or find the one that is already there
+         */
+
+
 //        $user = $this->findOrCreateSocial($this->getSocialUser($provider), $provider);
-//
-//        /**
-//         * User has been successfully created or already exists
-//         * Log the user in
-//         */
+
+        /**
+         * User has been successfully created or already exists
+         * Log the user in
+         */
 //        auth()->login($user, true);
-//
-//        /**
-//         * User authenticated, check to see if they are active.
-//         */
+
+        /**
+         * User authenticated, check to see if they are active.
+         */
 //        if (! access()->user()->isActive()) {
 //            auth()->logout();
 //            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
 //        }
-//
-//        /**
-//         * Throw an event in case you want to do anything when the user logs in
-//         */
-//        event(new UserLoggedIn($user));
-//
-//        /**
-//         * Set session variable so we know which provider user is logged in as, if ever needed
-//         */
-//        session([config('access.socialite_session_name') => $provider]);
 
-//        return redirect()->intended($this->redirectPath());
-        return Socialite::with($provider)->redirect();
-    }
+        /**
+         * Throw an event in case you want to do anything when the user logs in
+         */
+        event(new UserLoggedIn($user));
 
-    public function handleProviderCallback($provider)
-    {
-        Log::info($provider);
-//        $user = Socialite::with($provider)->user();
-        return '';
-        // $user->token;
+        /**
+         * Set session variable so we know which provider user is logged in as, if ever needed
+         */
+        session([config('access.socialite_session_name') => $provider]);
+
+        return redirect()->intended($this->redirectPath());
+//        return Socialite::with($provider)->redirect();
     }
 
 //    /**
@@ -168,7 +175,7 @@ class AuthController extends Controller
      * @return bool
      */
     private function findByEmail($email) {
-        $user = Member::where('email', $email)->first();
+        $user = Member::where('username', $email)->first();
 
         if ($user instanceof Member)
             return $user;
@@ -187,7 +194,7 @@ class AuthController extends Controller
         /**
          * Check to see if there is a user with this email first
          */
-        $user = $this->findByEmail($data->email);
+        $user = $this->findByEmail($data->id);
 
         /**
          * If the user does not exist create them
@@ -196,23 +203,25 @@ class AuthController extends Controller
          */
         if (! $user) {
             $user = $this->create([
-                'name'  => $data->name,
-                'email' => $data->email,
+                'name'  => $data->nickname,
+                'username' => $data->id,
+                'password' => $data->user['openid'],
+                'email' => $data->email
             ], true);
         }
 
-        /**
-         * See if the user has logged in with this social account before
-         */
-        if (! $user->hasProvider($provider)) {
-            /**
-             * Gather the provider data for saving and associate it with the user
-             */
-            $user->providers()->save(new SocialLogin([
-                'provider'    => $provider,
-                'provider_id' => $data->id,
-            ]));
-        }
+//        /**
+//         * See if the user has logged in with this social account before
+//         */
+//        if (! $user->hasProvider($provider)) {
+//            /**
+//             * Gather the provider data for saving and associate it with the user
+//             */
+//            $user->providers()->save(new SocialLogin([
+//                'provider'    => $provider,
+//                'provider_id' => $data->id,
+//            ]));
+//        }
 
         /**
          * Return the user object
@@ -228,25 +237,27 @@ class AuthController extends Controller
      */
     public function create(array $data, $provider = false)
     {
-        if ($provider) {
+//        if ($provider) {
             $user = Member::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'password' => null,
+                'username' => $data['username'],
+                'password' => bcrypt( $data['username']),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => 1,
                 'status' => 1,
             ]);
-        } else {
-            $user = Member::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed' => config('access.users.confirm_email') ? 0 : 1,
-                'status' => 1,
-            ]);
-        }
+//        } else {
+//            $user = Member::create([
+//                'name' => $data['name'],
+//                'email' => $data['email'],
+//                'username' => $data['user']['openid'],
+//                'password' => bcrypt( $data->user['openid']),
+//                'confirmation_code' => md5(uniqid(mt_rand(), true)),
+//                'confirmed' => config('access.users.confirm_email') ? 0 : 1,
+//                'status' => 1,
+//            ]);
+//        }
 
         /**
          * Add the default site role to the new user
@@ -259,15 +270,31 @@ class AuthController extends Controller
          *
          * If this is a social account they are confirmed through the social provider by default
          */
-        if (config('access.users.confirm_email') && $provider === false) {
-            $this->sendConfirmationEmail($user);
-        }
+//        if (config('access.users.confirm_email') && $provider === false) {
+//            $this->sendConfirmationEmail($user);
+//        }
 
         /**
          * Return the user object
          */
         return $user;
     }
+
+
+    /**
+     * @param $provider
+     * @return mixed
+     */
+//    public function getSocialUser($provider)
+//    {
+//        $clientId = env('WEIXIN_KEY');
+//        $clientSecret = env('WEIXIN_SECRET');
+//        $redirectUrl = env('WEIXIN_REDIRECT_URI');
+//        $additionalProviderConfig = ['site' => 'meta.stackoverflow.com'];
+//        $config = new \SocialiteProviders\Manager\Config($clientId, $clientSecret, $redirectUrl, $additionalProviderConfig);
+//
+//        return Socialite::driver($provider)->setConfig($config)->user();
+//    }
 }
 
 

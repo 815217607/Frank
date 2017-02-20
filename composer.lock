@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecb26a748a371111144b92819380c380",
+    "content-hash": "cd1cf5685607637a434df2f1c8d7008f",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -2400,32 +2400,31 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "1.2.4",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "f91e366b29bedab6cb2491f32113f6a811ac4972"
+                "reference": "775bd7f25c71ed88e9ae73ed52ba129fecc7abd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/f91e366b29bedab6cb2491f32113f6a811ac4972",
-                "reference": "f91e366b29bedab6cb2491f32113f6a811ac4972",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/775bd7f25c71ed88e9ae73ed52ba129fecc7abd0",
+                "reference": "775bd7f25c71ed88e9ae73ed52ba129fecc7abd0",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "~6.0",
-                "laravel/framework": "~5.0|~5.1|~5.2",
                 "laravel/socialite": "~2.0",
-                "php": ">=5.5.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.5.*"
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "SocialiteProviders\\Manager\\": "src/"
+                    "SocialiteProviders\\Manager\\": "src/",
+                    "SocialiteProviders\\Manager\\Test\\": "tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2439,30 +2438,30 @@
                 }
             ],
             "description": "Easily add new or override built-in providers in Laravel Socialite.",
-            "time": "2016-02-20T22:18:54+00:00"
+            "time": "2016-12-04T07:11:20+00:00"
         },
         {
             "name": "socialiteproviders/qq",
-            "version": "v1.1.1",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/QQ.git",
-                "reference": "0e2c80f4dcb356bfd0d85692a84676d7ffff5c67"
+                "reference": "49dd74c7f1932f6f83ebf0d0cca071c8939963d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/QQ/zipball/0e2c80f4dcb356bfd0d85692a84676d7ffff5c67",
-                "reference": "0e2c80f4dcb356bfd0d85692a84676d7ffff5c67",
+                "url": "https://api.github.com/repos/SocialiteProviders/QQ/zipball/49dd74c7f1932f6f83ebf0d0cca071c8939963d6",
+                "reference": "49dd74c7f1932f6f83ebf0d0cca071c8939963d6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
-                "socialiteproviders/manager": "~1.0"
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "SocialiteProviders\\Qq\\": "src/"
+                    "SocialiteProviders\\QQ\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2476,25 +2475,25 @@
                 }
             ],
             "description": "Qq.com OAuth2 Provider for Laravel Socialite",
-            "time": "2015-09-01T06:46:56+00:00"
+            "time": "2016-11-10T06:26:14+00:00"
         },
         {
             "name": "socialiteproviders/weibo",
-            "version": "v1.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Weibo.git",
-                "reference": "761232f499b28a651cfa30df3d8d155907f10acd"
+                "reference": "10ff7fd36edacfcc1513440e01b863e88c9ff05e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Weibo/zipball/761232f499b28a651cfa30df3d8d155907f10acd",
-                "reference": "761232f499b28a651cfa30df3d8d155907f10acd",
+                "url": "https://api.github.com/repos/SocialiteProviders/Weibo/zipball/10ff7fd36edacfcc1513440e01b863e88c9ff05e",
+                "reference": "10ff7fd36edacfcc1513440e01b863e88c9ff05e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
-                "socialiteproviders/manager": "~1.0"
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0"
             },
             "type": "library",
             "autoload": {
@@ -2513,25 +2512,25 @@
                 }
             ],
             "description": "weibo.com OAuth2 Provider for Laravel Socialite",
-            "time": "2015-06-29T05:47:15+00:00"
+            "time": "2016-04-01T07:00:54+00:00"
         },
         {
             "name": "socialiteproviders/weixin",
-            "version": "v1.0.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Weixin.git",
-                "reference": "4ccf95bc7907fcc7324e1761c27e581c0e29bc2d"
+                "reference": "f90ae2cf78c02516c4239f6b0513751e333467fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Weixin/zipball/4ccf95bc7907fcc7324e1761c27e581c0e29bc2d",
-                "reference": "4ccf95bc7907fcc7324e1761c27e581c0e29bc2d",
+                "url": "https://api.github.com/repos/SocialiteProviders/Weixin/zipball/f90ae2cf78c02516c4239f6b0513751e333467fe",
+                "reference": "f90ae2cf78c02516c4239f6b0513751e333467fe",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
-                "socialiteproviders/manager": "~1.0"
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.1"
             },
             "type": "library",
             "autoload": {
@@ -2547,28 +2546,32 @@
                 {
                     "name": "xyxu",
                     "email": "techxu@gmail.com"
+                },
+                {
+                    "name": "xiami",
+                    "email": "jhdxr@php.net"
                 }
             ],
             "description": "Weixin OAuth2 Provider for Laravel Socialite",
-            "time": "2015-07-13T13:51:52+00:00"
+            "time": "2016-10-04T12:31:18+00:00"
         },
         {
             "name": "socialiteproviders/weixin-web",
-            "version": "v1.0.0",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Weixin-Web.git",
-                "reference": "33ef175d51670428fba99f441f733e4087f4d88c"
+                "reference": "0ebcb0e9222b88cca2142574dd0315b4afd9c011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Weixin-Web/zipball/33ef175d51670428fba99f441f733e4087f4d88c",
-                "reference": "33ef175d51670428fba99f441f733e4087f4d88c",
+                "url": "https://api.github.com/repos/SocialiteProviders/Weixin-Web/zipball/0ebcb0e9222b88cca2142574dd0315b4afd9c011",
+                "reference": "0ebcb0e9222b88cca2142574dd0315b4afd9c011",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
-                "socialiteproviders/manager": "~1.0"
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~2.0"
             },
             "type": "library",
             "autoload": {
@@ -2587,7 +2590,7 @@
                 }
             ],
             "description": "Weixin-Web OAuth2 Provider for Laravel Socialite",
-            "time": "2015-07-13T14:06:01+00:00"
+            "time": "2016-08-06T06:55:03+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2815,7 +2818,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -5015,16 +5018,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b"
+                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e1718c6bf57e1efbb8793ada951584b2ab27775b",
-                "reference": "e1718c6bf57e1efbb8793ada951584b2ab27775b",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
+                "reference": "9724c684646fcb5387d579b4bfaa63ee0b0c64c8",
                 "shasum": ""
             },
             "require": {
@@ -5066,7 +5069,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-21T17:06:35+00:00"
+            "time": "2017-02-16T22:46:52+00:00"
         },
         {
             "name": "webmozart/assert",
