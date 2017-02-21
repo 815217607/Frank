@@ -108,7 +108,6 @@ class AuthController extends Controller
          * So it then continues creating the user
          */
 
-
             return $this->getAuthorizationFirst($provider);
 
 
@@ -121,29 +120,6 @@ class AuthController extends Controller
 
         $user = $this->findOrCreateSocial($info, $provider);
         auth()->guard('member')->login($user, true);
-//        return redirect()->intended($this->redirectPath());
-
-
-        /**
-         * Create the user if this is a new social account or find the one that is already there
-         */
-
-
-//        $user = $this->findOrCreateSocial($this->getSocialUser($provider), $provider);
-
-        /**
-         * User has been successfully created or already exists
-         * Log the user in
-         */
-//        auth()->login($user, true);
-
-        /**
-         * User authenticated, check to see if they are active.
-         */
-//        if (! access()->user()->isActive()) {
-//            auth()->logout();
-//            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
-//        }
 
         /**
          * Throw an event in case you want to do anything when the user logs in
@@ -156,18 +132,7 @@ class AuthController extends Controller
         session([config('access.socialite_session_name') => $provider]);
 
         return redirect()->intended($this->redirectPath());
-//        return Socialite::with($provider)->redirect();
     }
-
-//    /**
-//     * @param $provider
-//     * @return mixed
-//     */
-//    public function getSocialUser($provider)
-//    {
-//        dump(324234);die;
-////        return Socialite::driver($provider)->user();
-//    }
 
 
     /**
@@ -279,22 +244,6 @@ class AuthController extends Controller
          */
         return $user;
     }
-
-
-    /**
-     * @param $provider
-     * @return mixed
-     */
-//    public function getSocialUser($provider)
-//    {
-//        $clientId = env('WEIXIN_KEY');
-//        $clientSecret = env('WEIXIN_SECRET');
-//        $redirectUrl = env('WEIXIN_REDIRECT_URI');
-//        $additionalProviderConfig = ['site' => 'meta.stackoverflow.com'];
-//        $config = new \SocialiteProviders\Manager\Config($clientId, $clientSecret, $redirectUrl, $additionalProviderConfig);
-//
-//        return Socialite::driver($provider)->setConfig($config)->user();
-//    }
 }
 
 

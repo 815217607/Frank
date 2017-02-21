@@ -107,7 +107,7 @@ return [
         'client_secret' => env('WEIXIN_SECRET'),
         'redirect' => env('WEIXIN_REDIRECT_URI'),
         'auth_base_uri' => env('WEIXIN_REDIRECT_URI'),
-        'scopes' => [],
+        'scopes' => ['snsapi_userinfo'],
         'with' => [],
     ],
     'qq' => [
