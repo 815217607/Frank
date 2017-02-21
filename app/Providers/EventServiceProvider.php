@@ -34,7 +34,6 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\Weixin\WeixinExtendSocialite@handle',
             'SocialiteProviders\QQ\QqExtendSocialite@handle',
             'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
-            'SocialiteProviders\WeixinWeb\WeixinWebExtendSocialite@handle',
         ],
     ];
 

@@ -20,7 +20,7 @@ class AuthMember
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->to('/member/login');
+                return redirect()->to('/member/login/weixin');
             }
         }
 

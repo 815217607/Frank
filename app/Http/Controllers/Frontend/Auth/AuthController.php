@@ -109,13 +109,13 @@ class AuthController extends Controller
          */
 
             return $this->getAuthorizationFirst($provider);
-
-
-
     }
 
     public function handleProviderCallback(Request $request,$provider)
     {
+        $param=$request->all();
+        $returnurl=isset($param['returnurl'])?$param['returnurl']:$this->redirectPath();
+
         $info=$this->getSocialUser($provider);
 
         $user = $this->findOrCreateSocial($info, $provider);
@@ -131,7 +131,7 @@ class AuthController extends Controller
          */
         session([config('access.socialite_session_name') => $provider]);
 
-        return redirect()->intended($this->redirectPath());
+        return redirect()->intended($returnurl);
     }
 
 
@@ -243,6 +243,14 @@ class AuthController extends Controller
          * Return the user object
          */
         return $user;
+    }
+
+    public function socialBind($provider,$user_id, $openid, $platform){
+        Socialite::create([
+            'user_id'    => $user_id,
+            'provider'    => $provider,
+            'provider_id' => $openid,
+        ]);
     }
 }
 
