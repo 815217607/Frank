@@ -20,12 +20,15 @@
         "maatwebsite/excel": "v2.1.1",
         "leancloud/leancloud-sdk": "v0.2.3",
         "overtrue/wechat": "~3.1",
+
         "socialiteproviders/manager": "v2.2.1",
         "socialiteproviders/weixin": "v3.0.0",
         "socialiteproviders/qq":"v2.0.5",
         "socialiteproviders/weibo":"v2.0.1"
     },
     "require-dev": {
+        "eyuan/basement": "0.1.x-dev",
+        "eyuan/goods": "0.1.x-dev",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
@@ -72,5 +75,11 @@
     "config": {
         "preferred-install": "dist",
         "secure-http": false
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://composer-packages.ieyuan.com"
+        }
+    ]
 }

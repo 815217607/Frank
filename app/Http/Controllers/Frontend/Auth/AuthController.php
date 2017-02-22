@@ -12,6 +12,7 @@ use App\Services\Access\Traits\UseSocialite;
 use Auth;
 use App\Http\Controllers\Controller;
 
+use Eyuan\Cart\AuthExtend;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Log;
@@ -175,19 +176,6 @@ class AuthController extends Controller
             ], true);
         }
 
-//        /**
-//         * See if the user has logged in with this social account before
-//         */
-//        if (! $user->hasProvider($provider)) {
-//            /**
-//             * Gather the provider data for saving and associate it with the user
-//             */
-//            $user->providers()->save(new SocialLogin([
-//                'provider'    => $provider,
-//                'provider_id' => $data->id,
-//            ]));
-//        }
-
         /**
          * Return the user object
          */
@@ -212,32 +200,6 @@ class AuthController extends Controller
                 'confirmed' => 1,
                 'status' => 1,
             ]);
-//        } else {
-//            $user = Member::create([
-//                'name' => $data['name'],
-//                'email' => $data['email'],
-//                'username' => $data['user']['openid'],
-//                'password' => bcrypt( $data->user['openid']),
-//                'confirmation_code' => md5(uniqid(mt_rand(), true)),
-//                'confirmed' => config('access.users.confirm_email') ? 0 : 1,
-//                'status' => 1,
-//            ]);
-//        }
-
-        /**
-         * Add the default site role to the new user
-         */
-//        $user->attachRole($this->role->getDefaultMemberRole());
-
-        /**
-         * If users have to confirm their email and this is not a social account,
-         * send the confirmation email
-         *
-         * If this is a social account they are confirmed through the social provider by default
-         */
-//        if (config('access.users.confirm_email') && $provider === false) {
-//            $this->sendConfirmationEmail($user);
-//        }
 
         /**
          * Return the user object
@@ -245,13 +207,6 @@ class AuthController extends Controller
         return $user;
     }
 
-    public function socialBind($provider,$user_id, $openid, $platform){
-        Socialite::create([
-            'user_id'    => $user_id,
-            'provider'    => $provider,
-            'provider_id' => $openid,
-        ]);
-    }
 }
 
 
