@@ -16,6 +16,7 @@ use Eyuan\Cart\AuthExtend;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -114,9 +115,11 @@ class AuthController extends Controller
 
     public function handleProviderCallback(Request $request,$provider)
     {
+//        dump($returnurl);
         $param=$request->all();
-        $returnurl=isset($param['returnurl'])?$param['returnurl']:$this->redirectPath();
-
+        $return=Session::get('returnurl');
+        $returnurl=Session::has('returnurl')?Session::get('returnurl'):$this->redirectPath();
+        Session::forget('returnurl');
         $info=$this->getSocialUser($provider);
 
         $user = $this->findOrCreateSocial($info, $provider);

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthMember
 {
@@ -20,6 +21,9 @@ class AuthMember
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
+                $returnurl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+                if(isset($_SERVER['QUERY_STRING'])&&empty($_SERVER['QUERY_STRING']))$returnurl.'?'.$_SERVER['QUERY_STRING'];
+                Session::put('returnurl',$returnurl);
                 return redirect()->to('/member/login');
             }
         }
