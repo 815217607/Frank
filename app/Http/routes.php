@@ -20,6 +20,11 @@ Route::group(['middleware' => 'web'], function() {
 });
 
 
+Route::get('payment/alipay_callback',function(){
+    $pay=\Eyuan\Wexin\Pay\WechatService::getInstance();
+   return $pay->callback();
+});
+
 /**
  * Backend Routes
  * Namespaces indicate folder structure

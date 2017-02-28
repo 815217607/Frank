@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
 
     /*
@@ -199,7 +201,9 @@ return [
         /*
          * 第三方微信登录
          * */
-        \SocialiteProviders\Manager\ServiceProvider::class, // add
+        \SocialiteProviders\Manager\ServiceProvider::class,
+        \Eyuan\Payment\Wechat\PaymentServiceProvider::class,
+//        \Eyuan\Wexin\Pay\WechatServiceProvider::class,
 
 //一下为框架自带
 //        Creativeorange\Gravatar\GravatarServiceProvider::class,

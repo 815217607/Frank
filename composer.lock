@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd1cf5685607637a434df2f1c8d7008f",
+    "content-hash": "14209230dfba6411ff25315fa62d5053",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -310,16 +310,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "bd4461328621bde0ae6b1b2675fbc6aca4ceb558"
+                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/bd4461328621bde0ae6b1b2675fbc6aca4ceb558",
-                "reference": "bd4461328621bde0ae6b1b2675fbc6aca4ceb558",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/54cacc9b81758b14e3ce750f205a393d52339e97",
+                "reference": "54cacc9b81758b14e3ce750f205a393d52339e97",
                 "shasum": ""
             },
             "require": {
@@ -328,7 +328,7 @@
             },
             "require-dev": {
                 "doctrine/cache": "1.*",
-                "phpunit/phpunit": "^5.6.1"
+                "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "extra": {
@@ -374,7 +374,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2016-12-30T15:59:45+00:00"
+            "time": "2017-02-24T16:22:25+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -893,16 +893,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.3.1",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b"
+                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
-                "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
+                "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
                 "shasum": ""
             },
             "require": {
@@ -938,16 +938,23 @@
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
                 }
             ],
-            "description": "PSR-7 message implementation",
+            "description": "PSR-7 message implementation that also provides common utility methods",
             "keywords": [
                 "http",
                 "message",
+                "request",
+                "response",
                 "stream",
-                "uri"
+                "uri",
+                "url"
             ],
-            "time": "2016-06-24T23:00:38+00:00"
+            "time": "2017-02-27T10:51:17+00:00"
         },
         {
             "name": "hieu-le/active",
@@ -2556,43 +2563,6 @@
             "time": "2016-10-04T12:31:18+00:00"
         },
         {
-            "name": "socialiteproviders/weixin-web",
-            "version": "v2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SocialiteProviders/Weixin-Web.git",
-                "reference": "0ebcb0e9222b88cca2142574dd0315b4afd9c011"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Weixin-Web/zipball/0ebcb0e9222b88cca2142574dd0315b4afd9c011",
-                "reference": "0ebcb0e9222b88cca2142574dd0315b4afd9c011",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialiteProviders\\WeixinWeb\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "xyxu",
-                    "email": "techxu@gmail.com"
-                }
-            ],
-            "description": "Weixin-Web OAuth2 Provider for Laravel Socialite",
-            "time": "2016-08-06T06:55:03+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.6",
             "source": {
@@ -3790,6 +3760,125 @@
             "time": "2015-06-14T21:17:01+00:00"
         },
         {
+            "name": "eyuan/basement",
+            "version": "0.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@git.ieyuan.com:php-lib/yuan.lib.basement.git",
+                "reference": "65e8be6e85efefa5210831927b9c4bbf90286e8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://composer-packages.ieyuan.com/dist/eyuan-basement-0.1.x-dev-5b35b5.zip",
+                "reference": "65e8be6e85efefa5210831927b9c4bbf90286e8d",
+                "shasum": "a3c02fe74c6d371d8b07791663a1fec2df94a03f"
+            },
+            "require": {
+                "illuminate/contracts": "5.2.*",
+                "illuminate/database": ">=5.1.0",
+                "illuminate/support": ">=5.1.0",
+                "illuminate/validation": ">=5.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "eyuan\\basement\\": "src/eyuan/basement/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dick Yang",
+                    "email": "yang163_yang@hotmail.com"
+                }
+            ],
+            "description": "basement library",
+            "time": "2017-02-13T09:45:09+00:00"
+        },
+        {
+            "name": "eyuan/cart",
+            "version": "0.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@git.ieyuan.com:php-lib/yuan.lib.cart.git",
+                "reference": "de3089ed323d0c508cb97577641a9311ad8d3391"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://composer-packages.ieyuan.com/dist/eyuan-cart-0.1.x-dev-4971f3.zip",
+                "reference": "de3089ed323d0c508cb97577641a9311ad8d3391",
+                "shasum": "8b8a6edc2a761bab17c65e6a67b4957bdb8383aa"
+            },
+            "require": {
+                "eyuan/basement": "0.1.x-dev",
+                "eyuan/goods": "0.1.x-dev"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "@stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eyuan\\Cart\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank",
+                    "email": "fuqixue1987@163.com"
+                }
+            ],
+            "description": "basement library",
+            "keywords": [
+                "Stcartub",
+                "eyuan",
+                "order"
+            ],
+            "time": "2017-01-25T08:41:42+00:00"
+        },
+        {
+            "name": "eyuan/goods",
+            "version": "0.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@git.ieyuan.com:php-lib/yuan.lib.goods.git",
+                "reference": "5c1eead97f3e2288c5eec596ad6c63b53a804212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://composer-packages.ieyuan.com/dist/eyuan-goods-0.1.x-dev-6fcf5f.zip",
+                "reference": "5c1eead97f3e2288c5eec596ad6c63b53a804212",
+                "shasum": "61202e7ddc3f18baba74a17c3a36b50fa7a461fa"
+            },
+            "require": {
+                "eyuan/basement": "0.1.x-dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "eyuan\\goods\\": "src/goods/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rufo",
+                    "email": "775397252@qq.com"
+                }
+            ],
+            "time": "2017-01-24T10:38:06+00:00"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.6.0",
             "source": {
@@ -4369,25 +4458,30 @@
         },
         {
             "name": "phpunit/php-timer",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-timer.git",
-                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
+                "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
-                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
+                "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4|~5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "src/"
@@ -4409,20 +4503,20 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2016-05-12T18:03:57+00:00"
+            "time": "2017-02-26T11:10:40+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.9",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
                 "shasum": ""
             },
             "require": {
@@ -4458,7 +4552,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2016-11-15T14:06:22+00:00"
+            "time": "2017-02-27T10:12:30+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -5124,7 +5218,11 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "eyuan/basement": 20,
+        "eyuan/goods": 20,
+        "eyuan/cart": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -115,9 +115,7 @@ class AuthController extends Controller
 
     public function handleProviderCallback(Request $request,$provider)
     {
-//        dump($returnurl);
-        $param=$request->all();
-        $return=Session::get('returnurl');
+
         $returnurl=Session::has('returnurl')?Session::get('returnurl'):$this->redirectPath();
         Session::forget('returnurl');
         $info=$this->getSocialUser($provider);
@@ -174,17 +172,12 @@ class AuthController extends Controller
             $user = $this->create([
                 'name'  => $data->nickname,
                 'username' => $data->id,
-                'password' => $data->user['openid'],
+                'password' => $data->id,
                 'email' => $data->email
             ], true);
         }
-
-        /**
-         * Return the user object
-         */
         return $user;
     }
-
 
     /**
      * @param array $data

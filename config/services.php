@@ -108,9 +108,7 @@ return [
         'redirect' => env('WEIXIN_REDIRECT_URI'),
         'auth_base_uri' => env('WEIXIN_REDIRECT_URI'),
         'scopes' => ['snsapi_userinfo'],
-        'with' => [
-            'returnurl'=>'http://wxshop.ieyuan.com/'
-        ],
+        'with' => [],
     ],
     'qq' => [
         'client_id' => env('QQ_KEY'),
