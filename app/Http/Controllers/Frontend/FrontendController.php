@@ -86,5 +86,8 @@ class FrontendController extends Controller
 
     public function payCallback($tag){
         $order_no=$tag;
+        $payment=Payment::getInstance();
+//        $payment->setCallback('')
+        $payment-> getPayBack($tag);
     }
 }

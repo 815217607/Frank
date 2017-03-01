@@ -21,7 +21,11 @@ Route::group(['middleware' => 'web'], function() {
 
 
 Route::post('payment/alipay_callback',function(){
+
     $pay=\Eyuan\Wexin\Pay\WechatService::getInstance();
+    $pay->setCallback('1', function($paymentOrder){
+
+    });
    return $pay->callback();
 });
 
