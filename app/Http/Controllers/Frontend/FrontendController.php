@@ -69,40 +69,18 @@ class FrontendController extends Controller
          */
         $order=[
             'user_id'=>6,
-            'id'=>62,
+            'product_id'=>62,
             'order_no'=>'TC'.time(),
             'order_name'=>'测试支付1元',
             'price'=>'1',
             'product_type'=>'1',
             'payment_platform'=>'1',
         ];
-
-        $data=[
-            'product_id'=>$order['id'],
-            'order_name'=>$order['order_name'],
-            'price'=>$order['price'],
-            'payment_money'=>$order['price'],
-            'payment_platform'=>$order['payment_platform'],
-            'product_type'=>$order['product_type'],
-            'user_id'=>$order['user_id'],
-            'order_no'=>time(),
-        ];
-
-//        $db=DB::table('payment_order')->insert($data);
-//        $db=PaymentOrderModel::create($data);
         $send=Payment::getInstance();
 
-//        $send->asSend();
+        $info=$send->createOrder($order,'/','/');
 
-        $info=$send->createOrder($order);
+      return view(($info?'frontend.payment.success':'frontend.pay_error'),$info);
 
-//$da=[
-//        'name' => 3343,
-//        'email' => 3435,
-//        'username' => str_random(10),
-//        'password' => bcrypt('123456'),
-//        'remember_token' => str_random(10),
-//];
-//      Member::create($da);die;
     }
 }
