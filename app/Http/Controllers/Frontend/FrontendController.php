@@ -78,9 +78,13 @@ class FrontendController extends Controller
         ];
         $send=Payment::getInstance();
 
-        $info=$send->createOrder($order,'/','/');
+        $info=$send->createOrder($order,'/payment/wechat_callback','/');
 
       return view(($info?'frontend.payment.success':'frontend.pay_error'),$info);
 
+    }
+
+    public function payCallback($tag){
+        $order_no=$tag;
     }
 }

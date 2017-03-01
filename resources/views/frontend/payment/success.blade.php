@@ -11,7 +11,7 @@
         {
             WeixinJSBridge.invoke(
                     'getBrandWCPayRequest',
-                    "{{$jsApiParameters}}",
+                    {!! $jsApiParameters !!},
                     function(res){
                         //WeixinJSBridge.log(res.err_msg);
                         //alert(res.err_code+'---'+res.err_desc+'----'+res.err_msg);
@@ -49,7 +49,7 @@
         {
             WeixinJSBridge.invoke(
                     'editAddress',
-                    "{{$editAddress}}",
+                    {!! $editAddress !!},
                     function(res){
                         var value1 = res.proviceFirstStageName;
                         var value2 = res.addressCitySecondStageName;

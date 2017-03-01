@@ -20,10 +20,13 @@ Route::group(['middleware' => 'web'], function() {
 });
 
 
-Route::get('payment/alipay_callback',function(){
+Route::post('payment/alipay_callback',function(){
     $pay=\Eyuan\Wexin\Pay\WechatService::getInstance();
    return $pay->callback();
 });
+
+
+Route::get('payment/wechat_callback/{tag}','FrontendController@payCallback');
 
 /**
  * Backend Routes
